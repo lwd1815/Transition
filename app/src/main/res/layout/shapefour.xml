@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.example.lwd18.headzoom.MainActivity">
+	<LinearLayout
+			android:id="@+id/out"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+	<Button
+			android:id="@+id/first"
+			android:text="1"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content" />
+	<Button
+			android:id="@+id/second"
+			android:text="2"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content" />
+	<Button
+			android:id="@+id/thrid"
+			android:text="3"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content" />
+	<Button
+			android:id="@+id/four"
+			android:text="4"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/five"
+				android:text="5"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/six"
+				android:text="6"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content" />
+</LinearLayout>
+	<RelativeLayout
+			android:layout_below="@id/out"
+			android:id="@+id/base"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"></RelativeLayout>
+</RelativeLayout>

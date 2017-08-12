@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/container"
+		tools:context="com.example.lwd18.headzoom.MainActivity">
+
+	<ImageButton
+			android:id="@+id/btn1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:background="#00000000"
+			android:src="@drawable/shape1"
+			android:contentDescription="shape"
+			android:scaleType="centerInside" />
+
+	<ImageButton
+			android:id="@+id/btn12"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:background="#00000000"
+			android:src="@drawable/shape2"
+			android:contentDescription="shape"
+			android:scaleType="centerInside" />
+
+	<ImageButton
+			android:id="@+id/btn3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:background="#00000000"
+			android:src="@drawable/shape3"
+			android:contentDescription="shape"
+			android:scaleType="centerInside" />
+
+	<ImageButton
+			android:id="@+id/btn4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentBottom="true"
+			android:background="#00000000"
+			android:src="@drawable/shape4"
+			android:contentDescription="shape"
+			android:scaleType="centerInside" />
+	<TextView
+			android:id="@+id/info"
+			android:text="序列动画,会在球动完后出来"
+			android:layout_centerInParent="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+</RelativeLayout>
