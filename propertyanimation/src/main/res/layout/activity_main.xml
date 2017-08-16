@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.example.propertyanimation.MainActivity">
+
+	<LinearLayout
+			android:id="@+id/oo"
+			android:orientation="horizontal"
+			android:layout_width="368dp"
+			android:layout_height="wrap_content"
+			tools:layout_editor_absoluteY="0dp"
+			tools:layout_editor_absoluteX="8dp">
+		<Button
+				android:id="@+id/translate"
+				android:text="平移"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/xuanzhuan"
+				android:text="旋转"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/scale"
+				android:text="缩放"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/aphle"
+				android:text="透明"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/set"
+				android:text="平移缩放"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/set2"
+				android:text="平移旋转"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/set3"
+				android:text="平移淡出"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/other"
+				android:text="抛物线"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/other2"
+				android:text="待定"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+		<Button
+				android:id="@+id/other3"
+				android:text="待定"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content" />
+	</LinearLayout>
+<ImageView
+		android:id="@+id/yuan"
+		android:layout_below="@id/oo"
+		android:background="@drawable/shape2"
+		android:layout_width="30dp"
+		android:layout_height="30dp" />
+</RelativeLayout>
