@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //平移缩放
       case R.id.set:
+        Intent intent = new Intent(this,CollapsingToolbarLayoutActivity.class);
+        startActivity(intent);
         break;
       //平移旋转
       case R.id.set2:

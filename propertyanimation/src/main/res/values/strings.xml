@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">PropertyAnimation</string>
+	<string name="title_activity_china_calendar">老黄历</string>
 </resources>
