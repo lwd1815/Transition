@@ -45,9 +45,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ButterKnife.inject(this);
+    initClick();
+  }
+
+  private void initClick() {
+    translate.setOnClickListener(this);
+    xuanzhuan.setOnClickListener(this);
+    scale.setOnClickListener(this);
+    aphle.setOnClickListener(this);
+    set.setOnClickListener(this);
+    set2.setOnClickListener(this);
+    set3.setOnClickListener(this);
+    other.setOnClickListener(this);
+    other2.setOnClickListener(this);
+    other3.setOnClickListener(this);
   }
 
   @Override public void onClick(View view) {
+    switch (view.getId()){
+      //平移
+      case R.id.translate:
+        break;
+      //旋转
+      case R.id.xuanzhuan:
+        break;
+      //透明
+      case R.id.aphle:
+        break;
+      //缩放
+      case R.id.scale:
+        break;
+      //平移缩放
+      case R.id.set:
+        break;
+      //平移旋转
+      case R.id.set2:
+        break;
+      //平移淡出
+      case R.id.set3:
+        break;
+      //抛物线
+      case R.id.other:
+        break;
+      //待定
+      case R.id.other2:
+        break;
+      //待定
+      case R.id.other3:
+        break;
 
+    }
   }
 }
