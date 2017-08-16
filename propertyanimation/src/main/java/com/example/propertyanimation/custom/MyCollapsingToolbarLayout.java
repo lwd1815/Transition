@@ -34,7 +34,7 @@ public class MyCollapsingToolbarLayout extends CollapsingToolbarLayout{
   }
 
   @Override public void setTitle(@Nullable CharSequence title) {
-   // super.setTitle(title);
+    super.setTitle(title);
 
   }
   public void setTitle(int drawable) {
