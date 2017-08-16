@@ -77,7 +77,7 @@
 	</LinearLayout>
 <ImageView
 		android:id="@+id/yuan"
-		android:layout_below="@id/oo"
+		android:layout_centerInParent="true"
 		android:background="@drawable/shape2"
 		android:layout_width="30dp"
 		android:layout_height="30dp" />

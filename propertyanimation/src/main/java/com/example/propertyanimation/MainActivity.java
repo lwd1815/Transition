@@ -1,8 +1,14 @@
 package com.example.propertyanimation;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    * Frame refresh delay 帧刷新延迟
    *
    * 相关的类
-   * ObjectAnimator  动画的执行类，后面详细介绍
-   * ValueAnimator 动画的执行类，后面详细介绍 
+   * ObjectAnimator  动画的执行类，对象动画,直接作用于view
+   * ValueAnimator 动画的执行类，这个本身不能对view造成动画效果,它是根据指定属性的起始值,可选指定插值器,添加监听动画回调变化过程中的返回值,根据返回值来动态改变view的属性值
    * AnimatorSet 用于控制一组动画的执行：线性，一起，每个动画的先后执行等。
    * AnimatorInflater 用户加载属性动画的xml文件
    * TypeEvaluator  类型估值，主要用于设置动画操作属性的值。
@@ -68,9 +74,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //旋转
       case R.id.xuanzhuan:
+        ObjectAnimator.ofFloat(yuan,"rotationX",0.0F,360.0F).setDuration(500).start();
         break;
       //透明
       case R.id.aphle:
+        ObjectAnimator anim = ObjectAnimator.ofFloat(yuan,"zhy",1.0F,0.0F).setDuration(500);
+        anim.start();
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+          @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
+            float cVal = (float) valueAnimator.getAnimatedValue();
+            yuan.setAlpha(cVal);
+            yuan.setScaleX(cVal);
+            yuan.setScaleY(cVal);
+          }
+        });
         break;
       //缩放
       case R.id.scale:
@@ -86,12 +103,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //抛物线
       case R.id.other:
+        //垂直
+        //ValueAnimator animator = ValueAnimator.ofFloat(0,540-yuan.getHeight());
+        //animator.setTarget(yuan);
+        //animator.setDuration(1000).start();
+        //animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        //  @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
+        //    yuan.setTranslationY((Float) valueAnimator.getAnimatedValue());
+        //  }
+        //});
+        //抛物线
+        ValueAnimator animator = new ValueAnimator();
+        animator.setDuration(3000);
+        animator.setObjectValues(new PointF(0,0));
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setEvaluator(new TypeEvaluator<PointF>() {
+          @Override public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
+            PointF point = new PointF();
+            point.x=200*fraction*3;
+            point.y=0.5f*200*(fraction*3)*(fraction*3);
+            return point;
+          }
+        });
+        animator.start();
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+          @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
+            PointF point = (PointF) valueAnimator.getAnimatedValue();
+            yuan.setX(point.x);
+            yuan.setY(point.y);
+          }
+        });
         break;
       //待定
       case R.id.other2:
+        //过个动画联合执行
+        //ObjectAnimator animA= ObjectAnimator.ofFloat(yuan,"scaleX",1.0F,2F);
+        //ObjectAnimator animB= ObjectAnimator.ofFloat(yuan,"scaleY",1.0F,2F);
+        //AnimatorSet animSet = new AnimatorSet();
+        //animSet.setDuration(2000);
+        //animSet.setInterpolator(new LinearInterpolator());
+        //animSet.playTogether(animA,animB);
+        //animSet.start();
+        //几个动画先后连续执行
+        float cx = yuan.getX();
+        ObjectAnimator animC = ObjectAnimator.ofFloat(yuan,"scaleX",1.0f,2f);
+        ObjectAnimator animD = ObjectAnimator.ofFloat(yuan,"scaleY",1.0f,2f);
+        ObjectAnimator animE = ObjectAnimator.ofFloat(yuan,"x",cx,0f);
+        ObjectAnimator animF = ObjectAnimator.ofFloat(yuan,"x",cx);
+        AnimatorSet animSet = new AnimatorSet();
+        animSet.play(animC).with(animD);
+        animSet.play(animD).with(animF);
+        animSet.play(animF).with(animE);
+        animSet.setDuration(5000);
+        animSet.start();
         break;
       //待定
       case R.id.other3:
+        ObjectAnimator anim1 = ObjectAnimator.ofFloat(yuan,"zhys",0.0F,1.0F).setDuration(500);
+        anim1.start();
+        anim1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+          @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
+            float cVal = (float) valueAnimator.getAnimatedValue();
+            yuan.setAlpha(cVal);
+            yuan.setScaleX(cVal);
+            yuan.setScaleY(cVal);
+          }
+        });
         break;
 
     }
