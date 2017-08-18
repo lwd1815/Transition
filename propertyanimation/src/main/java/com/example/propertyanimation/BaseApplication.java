@@ -25,6 +25,14 @@ public class BaseApplication extends Application {
   @Override
   public void onCreate() {
     super.onCreate();
-    mRefWatcher = LeakCanary.install(this);
+   //setupLeakCanary();
+    mRefWatcher=LeakCanary.install(this);
+  }
+
+  protected RefWatcher setupLeakCanary() {
+    if (LeakCanary.isInAnalyzerProcess(this)){
+      return RefWatcher.DISABLED;
+    }
+    return LeakCanary.install(this);
   }
 }

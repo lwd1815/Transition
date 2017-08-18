@@ -185,6 +185,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
   }
 
+  private void async(){
+    startAsyncTask();
+  }
   //内存泄露测试类
   private void startAsyncTask() {
     // This async task is an anonymous class and therefore has a hidden reference to the outer
