@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.squareup.leakcanary.RefWatcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
   @InjectView(R.id.translate) Button translate;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    //leakcanary配置
+    RefWatcher refWatcher = BaseApplication.getRefWatcher(this);
+    refWatcher.watch(this);
     ButterKnife.inject(this);
     initClick();
   }

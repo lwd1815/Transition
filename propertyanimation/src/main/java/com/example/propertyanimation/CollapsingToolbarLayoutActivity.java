@@ -14,6 +14,7 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.example.propertyanimation.adapter.MyAdapter;
+
 public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
 
   @InjectView(R.id.lunar1_ccheader) TextView lunar1Ccheader;
