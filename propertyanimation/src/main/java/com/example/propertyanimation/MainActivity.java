@@ -6,7 +6,9 @@ import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.PointF;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
@@ -96,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //缩放
       case R.id.scale:
+        //点击测试内存泄露
+        startAsyncTask();
         break;
       //平移缩放
       case R.id.set:
@@ -179,5 +183,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
 
     }
+  }
+
+  //内存泄露测试类
+  private void startAsyncTask() {
+    // This async task is an anonymous class and therefore has a hidden reference to the outer
+    // class MainActivity. If the activity gets destroyed before the task finishes (e.g. rotation),
+    // the activity instance will leak.
+    new AsyncTask<Void, Void, Void>() {
+      @Override
+      protected Void doInBackground(Void... params) {
+        // Do some slow work in background
+        SystemClock.sleep(20000);
+        return null;
+      }
+    }.execute();
   }
 }
