@@ -17,7 +17,7 @@ public class MainsActivity extends AppCompatActivity implements TabHost.OnTabCha
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_mains);
-   myFragmentTabHost=findViewById(R.id.tabhost)
+   myFragmentTabHost= (MyFragmentTabHost) findViewById(R.id.tabhost);
     myFragmentTabHost.setup(this,getSupportFragmentManager(),R.id.realtabcontent);
     if (Build.VERSION.SDK_INT>10){
       myFragmentTabHost.getTabWidget().setShowDividers(0);
