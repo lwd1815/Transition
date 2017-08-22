@@ -81,4 +81,11 @@
 		android:background="@drawable/shape2"
 		android:layout_width="30dp"
 		android:layout_height="30dp" />
+
+	<com.example.propertyanimation.custom.MyFragmentTabHost
+			android:id="@+id/tab"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			/>
 </RelativeLayout>

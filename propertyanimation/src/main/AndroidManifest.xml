@@ -3,14 +3,13 @@
 		package="com.example.propertyanimation">
 
 	<application
+			android:name=".BaseApplication"
 			android:allowBackup="true"
 			android:icon="@mipmap/ic_launcher"
 			android:label="@string/app_name"
-			android:name=".BaseApplication"
 			android:roundIcon="@mipmap/ic_launcher_round"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
-
 		<service
 				android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
 				android:enabled="false"
@@ -19,7 +18,7 @@
 				android:name="com.squareup.leakcanary.DisplayLeakService"
 				android:enabled="false" />
 
-		<activity android:name=".MainActivity">
+		<activity android:name=".ui.MainsActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
@@ -27,11 +26,12 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".ScaleTranslateActivity" />
-		<activity android:name=".CollapsingToolbarLayoutActivity"
+		<activity
+				android:name=".CollapsingToolbarLayoutActivity"
 				android:label="@string/title_activity_china_calendar"
 				android:screenOrientation="portrait"
-				android:theme="@style/DrawerHeaderTheme"
-				></activity>
+				android:theme="@style/DrawerHeaderTheme" />
+		<activity android:name=".MainActivity"></activity>
 	</application>
 
 </manifest>

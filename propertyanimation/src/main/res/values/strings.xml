@@ -1,4 +1,9 @@
 <resources>
 	<string name="app_name">PropertyAnimation</string>
 	<string name="title_activity_china_calendar">老黄历</string>
+	<string name="main_tab_name_ui">首页</string>
+	<string name="main_tab_name_video">微信</string>
+	<string name="main_tab_name_kotlin">Kotlin</string>
+	<string name="main_tab_name_other">社区</string>
+	<string name="main_tab_name_me">我</string>
 </resources>
