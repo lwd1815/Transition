@@ -14,23 +14,24 @@ import android.util.AttributeSet;
  */
 
 public class MyFragmentTabHost extends FragmentTabHost {
-    private String mCruuentTag;
+  private String mCruuentTag;
   private String mNoTabChangeeTag;
-  public MyFragmentTabHost(Context context,AttributeSet attributeSet) {
-    super(context);
+
+  public MyFragmentTabHost(Context context, AttributeSet attributeSet) {
+    super(context,attributeSet);
   }
 
   @Override public void onTabChanged(String tabId) {
     super.onTabChanged(tabId);
-    if (tabId.equals(mNoTabChangeeTag)){
+    if (tabId.equals(mNoTabChangeeTag)) {
       setCurrentTabByTag(mCruuentTag);
-    }else {
+    } else {
       super.onTabChanged(tabId);
-      mCruuentTag=tabId;
+      mCruuentTag = tabId;
     }
   }
 
-  public void setNoTabChangedTag(String tag){
-  this.mNoTabChangeeTag=tag;
+  public void setNoTabChangedTag(String tag) {
+    this.mNoTabChangeeTag = tag;
   }
 }

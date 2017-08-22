@@ -1,5 +1,7 @@
 package com.example.propertyanimation.fragment;
 
+import com.example.propertyanimation.base.BaseFragment;
+
 /**
  * 创建者     李文东
  * 创建时间   2017/8/22 14:45
@@ -9,5 +11,5 @@ package com.example.propertyanimation.fragment;
  * 更新描述   ${TODO}
  */
 
-public class MeFragment {
+public class MeFragment extends BaseFragment {
 }
