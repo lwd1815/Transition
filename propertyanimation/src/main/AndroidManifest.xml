@@ -5,9 +5,9 @@
 	<application
 			android:name=".BaseApplication"
 			android:allowBackup="true"
-			android:icon="@mipmap/ic_launcher"
+			android:icon="@drawable/tm_emoji_s002"
 			android:label="@string/app_name"
-			android:roundIcon="@mipmap/ic_launcher_round"
+			android:roundIcon="@drawable/tm_emoji_s002"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
 		<service
@@ -18,7 +18,12 @@
 				android:name="com.squareup.leakcanary.DisplayLeakService"
 				android:enabled="false" />
 
-		<activity android:name=".ui.MainsActivity">
+		<activity android:name=".ui.MainsActivity"
+				android:allowBackup="true"
+				android:icon="@drawable/tm_emoji_s002"
+				android:label="@string/app_name"
+				android:supportsRtl="true"
+				>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 

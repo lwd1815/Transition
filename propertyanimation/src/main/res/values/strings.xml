@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">PropertyAnimation</string>
+	<string name="app_name">书架</string>
 	<string name="title_activity_china_calendar">老黄历</string>
 	<string name="main_tab_name_ui">首页</string>
 	<string name="main_tab_name_video">微信</string>
