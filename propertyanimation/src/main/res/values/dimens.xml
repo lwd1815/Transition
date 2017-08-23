@@ -2,4 +2,5 @@
 <resources>
 
 	<dimen name="tools_bar_height">300dp</dimen>
+	<dimen name="navigation_drawer_width">240dp</dimen>
 </resources>

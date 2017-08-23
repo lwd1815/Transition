@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.TextView;
 import com.example.propertyanimation.R;
 
 /**
@@ -34,7 +35,12 @@ public class MyCollapsingToolbarLayout extends CollapsingToolbarLayout{
   }
 
   @Override public void setTitle(@Nullable CharSequence title) {
-    super.setTitle(title);
+    //super.setTitle(title);
+    TextView textView = new TextView(getContext());
+    textView.setBackground(getContext().getResources().getDrawable(R.color.white));
+    textView.setHeight(20);
+    textView.setWidth(100);
+    textView.layout(0,0,100,20);
 
   }
   public void setTitle(int drawable) {
