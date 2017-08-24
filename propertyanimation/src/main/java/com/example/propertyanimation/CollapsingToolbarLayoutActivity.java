@@ -8,43 +8,46 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.example.propertyanimation.adapter.MyAdapter;
 import com.example.propertyanimation.custom.MyCollapsingToolbarLayout;
 
 public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
 
-  @InjectView(R.id.rv) RecyclerView rv;
-  @InjectView(R.id.lunar1_ccheader) TextView lunar1Ccheader;
-  @InjectView(R.id.date1_ccheader) TextView date1Ccheader;
-  @InjectView(R.id.chinayear1_ccheader) TextView chinayear1Ccheader;
-  @InjectView(R.id.week1_ccheader) TextView week1Ccheader;
-  @InjectView(R.id.lunar2_ccheader) TextView lunar2Ccheader;
-  @InjectView(R.id.chinayear2_ccheader) TextView chinayear2Ccheader;
-  @InjectView(R.id.date2_ccheader) TextView date2Ccheader;
-  @InjectView(R.id.animals1_ccheader) TextView animals1Ccheader;
-  @InjectView(R.id.animals2_ccheader) TextView animals2Ccheader;
-  @InjectView(R.id.week2_ccheader) TextView week2Ccheader;
-  @InjectView(R.id.back_myOrder) ImageView backMyOrder;
-  @InjectView(R.id.toolbar_myOrders) TextView toolbarMyOrders;
-  @InjectView(R.id.title_china_calendar) TextView titleChinaCalendar;
-  @InjectView(R.id.toolbar_myOrder) RelativeLayout toolbarMyOrder;
-  @InjectView(R.id.toolbar_layout) MyCollapsingToolbarLayout toolbarLayout;
-  @InjectView(R.id.app_bar) AppBarLayout appBar;
-  @InjectView(R.id.scales) TextView scales;
+  @BindView(R.id.rv) RecyclerView rv;
+  @BindView(R.id.lunar1_ccheader) TextView lunar1Ccheader;
+  @BindView(R.id.date1_ccheader) TextView date1Ccheader;
+  @BindView(R.id.chinayear1_ccheader) TextView chinayear1Ccheader;
+  @BindView(R.id.week1_ccheader) TextView week1Ccheader;
+  @BindView(R.id.lunar2_ccheader) TextView lunar2Ccheader;
+  @BindView(R.id.chinayear2_ccheader) TextView chinayear2Ccheader;
+  @BindView(R.id.date2_ccheader) TextView date2Ccheader;
+  @BindView(R.id.animals1_ccheader) TextView animals1Ccheader;
+  @BindView(R.id.animals2_ccheader) TextView animals2Ccheader;
+  @BindView(R.id.week2_ccheader) TextView week2Ccheader;
+  @BindView(R.id.scales) TextView scales;
+  @BindView(R.id.toolbar) Toolbar toolbar;
+  @BindView(R.id.toolbar_layout) MyCollapsingToolbarLayout toolbarLayout;
+  @BindView(R.id.app_bar) AppBarLayout appBar;
+  @BindView(R.id.back_myOrder) ImageView backMyOrder;
+  @BindView(R.id.toolbar_myOrders) TextView toolbarMyOrders;
+  @BindView(R.id.title_china_calendar) TextView titleChinaCalendar;
+  @BindView(R.id.toolbar_myOrder) RelativeLayout toolbarMyOrder;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_collapsing_toolbar_layout);
-    ButterKnife.inject(this);
+    ButterKnife.bind(this);
+
     initRv();
-    //initToolbar();
+    initToolbar();
     toolbarLayout.setTitle("杨柳依依");
     toolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
     //toolbarLayout.setCollapsedTitleGravity(View.FOCUSABLE_AUTO);
@@ -74,14 +77,16 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
     //    app:layout_collapseParallaxMultiplier="0.7"
     //        />-->
   }
+
   private static float lerp(float startValue, float endValue, float fraction,
       Interpolator interpolator) {
     if (interpolator != null) {
       fraction = interpolator.getInterpolation(fraction);
     }
     // return startValue + (fraction * (endValue - startValue));
-    return com.example.propertyanimation.AnimationUtils.lerp(startValue, endValue, fraction);
+    return AnimationUtils.lerp(startValue, endValue, fraction);
   }
+
   private void initRv() {
     LinearLayoutManager line = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     rv.setLayoutManager(line);
@@ -90,8 +95,6 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
     rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
       @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
-
-
 
         //play(Animator anima) –> 设置一个参考动画anima
         //
@@ -106,26 +109,26 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
 
       @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
         super.onScrolled(recyclerView, dx, dy);
-        System.out.println("dy======================"+dy);
-        if (dy<0){
+        System.out.println("dy======================" + dy);
+        if (dy < 0) {
 
-          Interpolator interpolator=new Interpolator() {
+          Interpolator interpolator = new Interpolator() {
             @Override public float getInterpolation(float v) {
               return 0;
             }
           };
-          ObjectAnimator animatorAS= ObjectAnimator.ofFloat(scales,"TranslationY",300,-300);
-          ObjectAnimator animatorBS= ObjectAnimator.ofFloat(scales,"scaleX",1f,0.8f);
-          ObjectAnimator animatorCS= ObjectAnimator.ofFloat(scales,"scaleY",1f,0.8f);
+          ObjectAnimator animatorAS = ObjectAnimator.ofFloat(scales, "TranslationY", 300, -300);
+          ObjectAnimator animatorBS = ObjectAnimator.ofFloat(scales, "scaleX", 1f, 0.8f);
+          ObjectAnimator animatorCS = ObjectAnimator.ofFloat(scales, "scaleY", 1f, 0.8f);
 
           AnimatorSet animatorSet = new AnimatorSet();
           animatorSet.play(animatorAS).with(animatorBS).with(animatorCS);
           animatorSet.setDuration(3000);
           animatorSet.start();
-        }else {
-          ObjectAnimator animatorAS= ObjectAnimator.ofFloat(scales,"TranslationY",-300,300);
-          ObjectAnimator animatorBS= ObjectAnimator.ofFloat(scales,"scaleX",0.8f,1f);
-          ObjectAnimator animatorCS= ObjectAnimator.ofFloat(scales,"scaleY",0.8f,1f);
+        } else {
+          ObjectAnimator animatorAS = ObjectAnimator.ofFloat(scales, "TranslationY", -300, 300);
+          ObjectAnimator animatorBS = ObjectAnimator.ofFloat(scales, "scaleX", 0.8f, 1f);
+          ObjectAnimator animatorCS = ObjectAnimator.ofFloat(scales, "scaleY", 0.8f, 1f);
 
           AnimatorSet animatorSet = new AnimatorSet();
           animatorSet.play(animatorAS).with(animatorBS).with(animatorCS);
@@ -143,8 +146,8 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  //private void initToolbar() {
-  //  setSupportActionBar(toolbar);
-  //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-  //}
+  private void initToolbar() {
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+  }
 }

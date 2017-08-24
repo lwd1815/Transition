@@ -18,8 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.example.propertyanimation.R;
 import com.example.propertyanimation.adapter.DrawableLayoutAdapter;
 import com.example.propertyanimation.base.BaseFragment;
@@ -38,7 +36,6 @@ public class DrawableFragment extends BaseFragment implements View.OnClickListen
    * Remember the position of the selected item.
    */
   private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-  @InjectView(R.id.rv) RecyclerView rv;
 
   /**
    * A pointer to the current callbacks instance (the Activity).
@@ -54,6 +51,7 @@ public class DrawableFragment extends BaseFragment implements View.OnClickListen
 
   private int mCurrentSelectedPosition = 0;
   private boolean mFromSavedInstanceState;
+  private RecyclerView rv;
 
   @Override public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -74,8 +72,8 @@ public class DrawableFragment extends BaseFragment implements View.OnClickListen
   @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     mDrawerListView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+    rv = mDrawerListView.findViewById(R.id.rv);
     mDrawerListView.setOnClickListener(this);
-    ButterKnife.inject(this, mDrawerListView);
     initView(mDrawerListView);
     initData();
     return mDrawerListView;
@@ -83,14 +81,17 @@ public class DrawableFragment extends BaseFragment implements View.OnClickListen
 
   @Override public void onLazyInitView(@Nullable Bundle savedInstanceState) {
     super.onLazyInitView(savedInstanceState);
-     initRv();
+    initRv();
   }
+
   private void initRv() {
-    LinearLayoutManager line = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+    LinearLayoutManager line =
+        new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
     rv.setLayoutManager(line);
     DrawableLayoutAdapter adapter = new DrawableLayoutAdapter();
     rv.setAdapter(adapter);
   }
+
   @Override public void onClick(View v) {
     int id = v.getId();
     switch (id) {
@@ -207,7 +208,6 @@ public class DrawableFragment extends BaseFragment implements View.OnClickListen
 
   @Override public void onDestroyView() {
     super.onDestroyView();
-    ButterKnife.reset(this);
   }
 
   public static interface NavigationDrawerCallbacks {

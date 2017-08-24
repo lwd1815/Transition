@@ -15,23 +15,26 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import com.example.propertyanimation.custom.MyFragmentTabHost;
 import com.squareup.leakcanary.RefWatcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-  @InjectView(R.id.translate) Button translate;
-  @InjectView(R.id.xuanzhuan) Button xuanzhuan;
-  @InjectView(R.id.scale) Button scale;
-  @InjectView(R.id.aphle) Button aphle;
-  @InjectView(R.id.set) Button set;
-  @InjectView(R.id.set2) Button set2;
-  @InjectView(R.id.set3) Button set3;
-  @InjectView(R.id.other) Button other;
-  @InjectView(R.id.other2) Button other2;
-  @InjectView(R.id.other3) Button other3;
-  @InjectView(R.id.oo) LinearLayout oo;
-  @InjectView(R.id.yuan) ImageView yuan;
+
+  @BindView(R.id.translate) Button translate;
+  @BindView(R.id.xuanzhuan) Button xuanzhuan;
+  @BindView(R.id.scale) Button scale;
+  @BindView(R.id.aphle) Button aphle;
+  @BindView(R.id.set) Button set;
+  @BindView(R.id.set2) Button set2;
+  @BindView(R.id.set3) Button set3;
+  @BindView(R.id.other) Button other;
+  @BindView(R.id.other2) Button other2;
+  @BindView(R.id.other3) Button other3;
+  @BindView(R.id.oo) LinearLayout oo;
+  @BindView(R.id.yuan) ImageView yuan;
+  @BindView(R.id.tab) MyFragmentTabHost tab;
 
   /**
    * 相关API
@@ -54,10 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    ButterKnife.bind(this);
     //leakcanary配置
     RefWatcher refWatcher = BaseApplication.getRefWatcher(this);
     refWatcher.watch(this);
-    ButterKnife.inject(this);
+
     initClick();
   }
 
@@ -75,17 +79,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   }
 
   @Override public void onClick(View view) {
-    switch (view.getId()){
+    switch (view.getId()) {
       //平移
       case R.id.translate:
         break;
       //旋转
       case R.id.xuanzhuan:
-        ObjectAnimator.ofFloat(yuan,"rotationX",0.0F,360.0F).setDuration(500).start();
+        ObjectAnimator.ofFloat(yuan, "rotationX", 0.0F, 360.0F).setDuration(500).start();
         break;
       //透明
       case R.id.aphle:
-        ObjectAnimator anim = ObjectAnimator.ofFloat(yuan,"zhy",1.0F,0.0F).setDuration(500);
+        ObjectAnimator anim = ObjectAnimator.ofFloat(yuan, "zhy", 1.0F, 0.0F).setDuration(500);
         anim.start();
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
           @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //平移缩放
       case R.id.set:
-        Intent intent = new Intent(this,CollapsingToolbarLayoutActivity.class);
+        Intent intent = new Intent(this, CollapsingToolbarLayoutActivity.class);
         startActivity(intent);
         break;
       //平移旋转
@@ -126,13 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //抛物线
         ValueAnimator animator = new ValueAnimator();
         animator.setDuration(3000);
-        animator.setObjectValues(new PointF(0,0));
+        animator.setObjectValues(new PointF(0, 0));
         animator.setInterpolator(new LinearInterpolator());
         animator.setEvaluator(new TypeEvaluator<PointF>() {
           @Override public PointF evaluate(float fraction, PointF startValue, PointF endValue) {
             PointF point = new PointF();
-            point.x=200*fraction*3;
-            point.y=0.5f*200*(fraction*3)*(fraction*3);
+            point.x = 200 * fraction * 3;
+            point.y = 0.5f * 200 * (fraction * 3) * (fraction * 3);
             return point;
           }
         });
@@ -157,10 +161,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //animSet.start();
         //几个动画先后连续执行
         float cx = yuan.getX();
-        ObjectAnimator animC = ObjectAnimator.ofFloat(yuan,"scaleX",1.0f,2f);
-        ObjectAnimator animD = ObjectAnimator.ofFloat(yuan,"scaleY",1.0f,2f);
-        ObjectAnimator animE = ObjectAnimator.ofFloat(yuan,"x",cx,0f);
-        ObjectAnimator animF = ObjectAnimator.ofFloat(yuan,"x",cx);
+        ObjectAnimator animC = ObjectAnimator.ofFloat(yuan, "scaleX", 1.0f, 2f);
+        ObjectAnimator animD = ObjectAnimator.ofFloat(yuan, "scaleY", 1.0f, 2f);
+        ObjectAnimator animE = ObjectAnimator.ofFloat(yuan, "x", cx, 0f);
+        ObjectAnimator animF = ObjectAnimator.ofFloat(yuan, "x", cx);
         AnimatorSet animSet = new AnimatorSet();
         animSet.play(animC).with(animD);
         animSet.play(animD).with(animF);
@@ -170,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       //待定
       case R.id.other3:
-        ObjectAnimator anim1 = ObjectAnimator.ofFloat(yuan,"zhys",0.0F,1.0F).setDuration(500);
+        ObjectAnimator anim1 = ObjectAnimator.ofFloat(yuan, "zhys", 0.0F, 1.0F).setDuration(500);
         anim1.start();
         anim1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
           @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
@@ -181,21 +185,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           }
         });
         break;
-
     }
   }
 
-  private void async(){
+  private void async() {
     startAsyncTask();
   }
+
   //内存泄露测试类
   private void startAsyncTask() {
     // This async task is an anonymous class and therefore has a hidden reference to the outer
     // class ExpandMainActivity. If the activity gets destroyed before the task finishes (e.g. rotation),
     // the activity instance will leak.
     new AsyncTask<Void, Void, Void>() {
-      @Override
-      protected Void doInBackground(Void... params) {
+      @Override protected Void doInBackground(Void... params) {
         // Do some slow work in background
         SystemClock.sleep(20000);
         return null;

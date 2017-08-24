@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.propertyanimation.CollapsingToolbarLayoutActivity;
 import com.example.propertyanimation.MainActivity;
 import com.example.propertyanimation.R;
+import com.example.propertyanimation.customview.CustomViewActivity;
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
 
@@ -42,6 +43,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
           }else if (position==3){
             Intent intent = new Intent(holder.itemView.getContext(), Main2Activity.class);
             holder.itemView.getContext().startActivity(intent);
+          }else if (position==4){
+            Intent intent = new Intent(holder.itemView.getContext(), CustomViewActivity.class);
+            holder.itemView.getContext().startActivity(intent);
           }
         }
       });
@@ -49,7 +53,7 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
   }
 
   @Override public int getItemCount() {
-    return 5;
+    return 10;
   }
 
   public static class NormalViewHolder extends RecyclerView.ViewHolder{

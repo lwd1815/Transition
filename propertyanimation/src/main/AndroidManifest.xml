@@ -18,12 +18,12 @@
 				android:name="com.squareup.leakcanary.DisplayLeakService"
 				android:enabled="false" />
 
-		<activity android:name=".ui.MainsActivity"
+		<activity
+				android:name=".ui.MainsActivity"
 				android:allowBackup="true"
 				android:icon="@drawable/tm_emoji_s002"
 				android:label="@string/app_name"
-				android:supportsRtl="true"
-				>
+				android:supportsRtl="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
@@ -36,15 +36,14 @@
 				android:label="@string/title_activity_china_calendar"
 				android:screenOrientation="portrait"
 				android:theme="@style/DrawerHeaderTheme" />
-		<activity android:name=".MainActivity"></activity>
-
-		<activity android:name=".expand.ExpandMainActivity"/>
-		<activity android:name=".expand.BottomTabActivity"/>
-		<activity android:name=".expand.ItemDetailActivity"/>
-		<activity android:name=".expand.ItemListActivity"/>
-		<activity android:name=".expand.Main2Activity"/>
-		<activity android:name=".expand.ScrollingActivity"/>
-
+		<activity android:name=".MainActivity" />
+		<activity android:name=".expand.ExpandMainActivity" />
+		<activity android:name=".expand.BottomTabActivity" />
+		<activity android:name=".expand.ItemDetailActivity" />
+		<activity android:name=".expand.ItemListActivity" />
+		<activity android:name=".expand.Main2Activity" />
+		<activity android:name=".expand.ScrollingActivity" />
+		<activity android:name=".customview.CustomViewActivity"></activity>
 	</application>
 
 </manifest>

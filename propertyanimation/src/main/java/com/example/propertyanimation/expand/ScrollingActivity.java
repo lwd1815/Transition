@@ -47,6 +47,7 @@ public class ScrollingActivity extends AppCompatActivity {
           originHeight = mSearchBGTxt.getHeight();
           originY = (int) mSearchBGTxt.getY();
           originL = mSearchBGTxt.getLeft();
+          System.out.println("左======"+originWidth+"=====上==="+originHeight+"======右====="+originY+"======下====="+originL);
           isFirst = true;
         }
         //ViewGroup.LayoutParams lp = mSearchBGTxt.getLayoutParams();
@@ -60,6 +61,7 @@ public class ScrollingActivity extends AppCompatActivity {
         Log.w("originWidth",originWidth+"");
         Log.w("new w",w+"");
         mSearchBGTxt.layout((originWidth-w)/2+2*originL,originY+verticalOffset/6,(originWidth+w)/2,originY+verticalOffset/6+originHeight);
+        System.out.println("左1======"+(originWidth-w)/2+2*originL+"=====上1==="+originY+verticalOffset/6+"======右1====="+(originWidth+w)/2+"======下1====="+originY+verticalOffset/6+originHeight);
       }
     });
 

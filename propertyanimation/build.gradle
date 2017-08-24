@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.jakewharton.butterknife'
 android {
   compileSdkVersion 26
   buildToolsVersion "26.0.0"
@@ -28,7 +28,7 @@ dependencies {
   })
   compile 'com.android.support:appcompat-v7:26.+'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
-  compile 'com.jakewharton:butterknife:5.1.1'
+  compile 'com.jakewharton:butterknife:8.2.1'
   compile 'com.android.support:design:26.+'
   compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
   compile 'me.yokeyword:fragmentation:0.10.3'
