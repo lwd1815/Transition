@@ -47,9 +47,6 @@ public class MainsActivity extends BaseDeepActivity
   }
 
   private void initView() {
-
-
-
     drawableFragment =
         (DrawableFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
     mTitle=getTitle();

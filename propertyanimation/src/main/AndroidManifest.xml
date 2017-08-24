@@ -37,6 +37,14 @@
 				android:screenOrientation="portrait"
 				android:theme="@style/DrawerHeaderTheme" />
 		<activity android:name=".MainActivity"></activity>
+
+		<activity android:name=".expand.ExpandMainActivity"/>
+		<activity android:name=".expand.BottomTabActivity"/>
+		<activity android:name=".expand.ItemDetailActivity"/>
+		<activity android:name=".expand.ItemListActivity"/>
+		<activity android:name=".expand.Main2Activity"/>
+		<activity android:name=".expand.ScrollingActivity"/>
+
 	</application>
 
 </manifest>

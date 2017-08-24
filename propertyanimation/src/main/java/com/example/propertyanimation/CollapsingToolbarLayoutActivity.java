@@ -1,5 +1,7 @@
 package com.example.propertyanimation;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -7,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +37,7 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
   @InjectView(R.id.toolbar_myOrder) RelativeLayout toolbarMyOrder;
   @InjectView(R.id.toolbar_layout) MyCollapsingToolbarLayout toolbarLayout;
   @InjectView(R.id.app_bar) AppBarLayout appBar;
+  @InjectView(R.id.scales) TextView scales;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -41,13 +45,14 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
     ButterKnife.inject(this);
     initRv();
     //initToolbar();
-    toolbarLayout.setTitle("  ");
+    toolbarLayout.setTitle("杨柳依依");
     toolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
     //toolbarLayout.setCollapsedTitleGravity(View.FOCUSABLE_AUTO);
     //扩展时文字颜色
     toolbarLayout.setExpandedTitleColor(Color.WHITE);
     toolbarLayout.setCollapsedTitleTextColor(Color.GREEN);
     toolbarLayout.setDrawingCacheBackgroundColor(Color.GREEN);
+
     //<!--
     //        scroll 想滚动就必须设置这个
     //    enterAlaways 实现quick return 效果,当向下移动时,就立即显示view(如toolbar)
@@ -69,12 +74,66 @@ public class CollapsingToolbarLayoutActivity extends AppCompatActivity {
     //    app:layout_collapseParallaxMultiplier="0.7"
     //        />-->
   }
-
+  private static float lerp(float startValue, float endValue, float fraction,
+      Interpolator interpolator) {
+    if (interpolator != null) {
+      fraction = interpolator.getInterpolation(fraction);
+    }
+    // return startValue + (fraction * (endValue - startValue));
+    return com.example.propertyanimation.AnimationUtils.lerp(startValue, endValue, fraction);
+  }
   private void initRv() {
     LinearLayoutManager line = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
     rv.setLayoutManager(line);
     MyAdapter adapter = new MyAdapter();
     rv.setAdapter(adapter);
+    rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+      @Override public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+
+
+
+        //play(Animator anima) –> 设置一个参考动画anima
+        //
+        //with(Animator anima) –> 跟参考动画同时执行anima
+        //
+        //before(Animator anima) –> 在参考动画之前执行anima
+        //
+        //after(Animator anima) –> 在参考动画之后执行anima
+        //
+        //after(long delay) –> 在参考动画之后延迟delay毫秒，才执行参考动画之后的动画
+      }
+
+      @Override public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        super.onScrolled(recyclerView, dx, dy);
+        System.out.println("dy======================"+dy);
+        if (dy<0){
+
+          Interpolator interpolator=new Interpolator() {
+            @Override public float getInterpolation(float v) {
+              return 0;
+            }
+          };
+          ObjectAnimator animatorAS= ObjectAnimator.ofFloat(scales,"TranslationY",300,-300);
+          ObjectAnimator animatorBS= ObjectAnimator.ofFloat(scales,"scaleX",1f,0.8f);
+          ObjectAnimator animatorCS= ObjectAnimator.ofFloat(scales,"scaleY",1f,0.8f);
+
+          AnimatorSet animatorSet = new AnimatorSet();
+          animatorSet.play(animatorAS).with(animatorBS).with(animatorCS);
+          animatorSet.setDuration(3000);
+          animatorSet.start();
+        }else {
+          ObjectAnimator animatorAS= ObjectAnimator.ofFloat(scales,"TranslationY",-300,300);
+          ObjectAnimator animatorBS= ObjectAnimator.ofFloat(scales,"scaleX",0.8f,1f);
+          ObjectAnimator animatorCS= ObjectAnimator.ofFloat(scales,"scaleY",0.8f,1f);
+
+          AnimatorSet animatorSet = new AnimatorSet();
+          animatorSet.play(animatorAS).with(animatorBS).with(animatorCS);
+          animatorSet.setDuration(3000);
+          animatorSet.start();
+        }
+      }
+    });
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {

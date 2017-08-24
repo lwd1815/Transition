@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.example.propertyanimation.CollapsingToolbarLayoutActivity;
 import com.example.propertyanimation.MainActivity;
 import com.example.propertyanimation.R;
+import com.example.propertyanimation.expand.ExpandMainActivity;
+import com.example.propertyanimation.expand.Main2Activity;
 
 /**
  * 创建者     李文东
@@ -33,6 +35,12 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==1){
             Intent intent = new Intent(holder.itemView.getContext(), MainActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==2){
+            Intent intent = new Intent(holder.itemView.getContext(), ExpandMainActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==3){
+            Intent intent = new Intent(holder.itemView.getContext(), Main2Activity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }

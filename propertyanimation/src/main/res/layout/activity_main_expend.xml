@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context="com.deepbay.bottombar.MainActivity">
+
+	<FrameLayout
+			android:id="@+id/content"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+
+
+
+		<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+			<TextView
+					android:id="@+id/message"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/activity_vertical_margin"
+					android:layout_marginLeft="@dimen/activity_horizontal_margin"
+					android:layout_marginRight="@dimen/activity_horizontal_margin"
+					android:layout_marginTop="@dimen/activity_vertical_margin"
+					android:text="@string/title_home"/>
+			<LinearLayout
+					android:layout_width="300dp"
+					android:layout_height="50dp"
+					android:layout_gravity="center"
+					android:orientation="horizontal"
+					android:weightSum="2">
+				<TextView
+						android:id="@+id/tv_in"
+						android:layout_width="0dp"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:background="#e96d3f"
+						android:gravity="center"
+						android:text="up"
+						android:textColor="@android:color/white"/>
+				<TextView
+						android:id="@+id/tv_out"
+						android:layout_width="0dp"
+						android:layout_height="match_parent"
+						android:layout_weight="1"
+						android:background="#2fc36f"
+						android:gravity="center"
+						android:text="down"
+						android:textColor="@android:color/white"/>
+			</LinearLayout>
+			<ImageView
+					app:srcCompat="@drawable/ic_method_draw_image"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"/>
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<android.support.design.widget.BottomNavigationView
+			android:id="@+id/navigation"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:background="?android:attr/windowBackground"
+			app:menu="@menu/navigation"/>
+
+</LinearLayout>

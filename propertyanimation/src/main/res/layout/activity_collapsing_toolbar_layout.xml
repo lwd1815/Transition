@@ -27,19 +27,18 @@
 			<!--you collapsed view-->
 			<include layout="@layout/china_calendar_header" />
 
-			<!--<android.support.v7.widget.Toolbar-->
-					<!--android:id="@+id/toolbar"-->
-					<!--android:layout_width="match_parent"-->
-					<!--android:layout_height="?attr/actionBarSize"-->
-					<!--app:layout_collapseMode="pin"-->
-					<!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
-
-
-			<!--</android.support.v7.widget.Toolbar>-->
+			<android.support.v7.widget.Toolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					app:layout_collapseMode="pin"
+					app:popupTheme="@style/AppTheme.PopupOverlay">
+			</android.support.v7.widget.Toolbar>
 		</com.example.propertyanimation.custom.MyCollapsingToolbarLayout>
 	</android.support.design.widget.AppBarLayout>
 
 	<RelativeLayout
+			android:visibility="invisible"
 			android:theme="@style/AppTheme.AppBarOverlay"
 			android:id="@+id/toolbar_myOrder"
 			android:layout_width="match_parent"

@@ -25,4 +25,5 @@
 		<item name="expandedTitleMargin">32.0dip</item>
 		<item name="statusBarScrim">?colorPrimaryDark</item>
 	</style>
+
 </resources>

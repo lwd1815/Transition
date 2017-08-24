@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   //内存泄露测试类
   private void startAsyncTask() {
     // This async task is an anonymous class and therefore has a hidden reference to the outer
-    // class MainActivity. If the activity gets destroyed before the task finishes (e.g. rotation),
+    // class ExpandMainActivity. If the activity gets destroyed before the task finishes (e.g. rotation),
     // the activity instance will leak.
     new AsyncTask<Void, Void, Void>() {
       @Override
