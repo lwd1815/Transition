@@ -29,6 +29,8 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
   @Override public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
     if (holder instanceof NormalViewHolder){
+
+      ((NormalViewHolder) holder).tv.setText("书架 "+position);
       ((NormalViewHolder) holder).tv.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View view) {
           if (position==0) {
@@ -60,7 +62,7 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     TextView tv;
     public NormalViewHolder(View itemView) {
       super(itemView);
-      tv=(TextView) itemView.findViewById(R.id.tv);
+      tv= itemView.findViewById(R.id.tv);
     }
   }
 }

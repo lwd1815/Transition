@@ -9,8 +9,6 @@ public class CustomViewActivity extends BaseDeepActivity {
   /**
    * http://blog.csdn.net/aigestudio/article/details/41212583
    * 学习的博客地址
-   *
-   *
    */
 
   @Override protected void initActivity() {
