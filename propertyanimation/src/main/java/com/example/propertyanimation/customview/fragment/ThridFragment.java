@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.example.propertyanimation.R;
 import com.example.propertyanimation.base.BaseFragment;
+import com.example.propertyanimation.customview.view.ThridView;
 
 /**
  * 创建者     李文东
@@ -18,6 +20,8 @@ import com.example.propertyanimation.base.BaseFragment;
  */
 
 public class ThridFragment extends BaseFragment {
+
+  private ThridView thridView;
   public ThridFragment(){}
 
   public static ThridFragment getInstance(){
@@ -35,6 +39,9 @@ public class ThridFragment extends BaseFragment {
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = View.inflate(getContext(), R.layout.fragment_child_thrid,null);
+    FrameLayout frameLayout = view.findViewById(R.id.child_third);
+    thridView=new ThridView(getContext());
+    frameLayout.addView(thridView);
     return view;
   }
 
