@@ -9,6 +9,7 @@ import com.example.propertyanimation.CollapsingToolbarLayoutActivity;
 import com.example.propertyanimation.MainActivity;
 import com.example.propertyanimation.R;
 import com.example.propertyanimation.customview.CustomViewActivity;
+import com.example.propertyanimation.customview.pagecurl.activities.PageCurlActivity;
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
 
@@ -47,6 +48,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==4){
             Intent intent = new Intent(holder.itemView.getContext(), CustomViewActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==5){
+            Intent intent = new Intent(holder.itemView.getContext(), PageCurlActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }

@@ -43,7 +43,8 @@
 		<activity android:name=".expand.ItemListActivity" />
 		<activity android:name=".expand.Main2Activity" />
 		<activity android:name=".expand.ScrollingActivity" />
-		<activity android:name=".customview.CustomViewActivity"></activity>
+		<activity android:name=".customview.CustomViewActivity"/>
+		<activity android:name=".customview.pagecurl.activities.PageCurlActivity"/>
 	</application>
 
 </manifest>
