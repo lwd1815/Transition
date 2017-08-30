@@ -197,5 +197,43 @@ public class ThridView extends View {
     textpaint.setTextScaleX(2);
 
     canvas.drawText("杨柳依依",10,610,textpaint);
+
+    textpaint.setColor(Color.GREEN);
+    textpaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    canvas.drawText("杨柳依依",10,700,textpaint);
+
+    Paint textpaints=new Paint();
+    textpaints.setStrokeWidth(3);
+    textpaints.setAntiAlias(true);
+    textpaints.setTextScaleX(2);
+    textpaints.setTextSize(80);
+    textpaints.setColor(Color.RED);
+    textpaints.setStyle(Paint.Style.STROKE);
+    textpaint.setTextSkewX((float) 0.25);
+    textpaint.setColor(Color.GRAY);
+    textpaint.setStyle(Paint.Style.STROKE);
+    canvas.drawText("杨柳依依",10,800,textpaint);
+
+    canvas.drawText("我就不信",10,900,textpaint);
+
+    //画个画布,将以前的都遮住
+    //canvas.drawColor(Color.GRAY);
+    textpaint.setColor(Color.YELLOW);
+    canvas.drawText("我就是我",200,300,textPaint);
+
+    /**
+     * 指定文字位置
+     *
+     * drawPosText(char[]text,int index,int count,float[]pos,Paint paint)
+     * drawPosText(String text,float[]pos,Paint paint)
+     *
+     * 第一个构造函数:实现截取一分部分文字绘制
+     *
+     * 参数说明
+     * char[]text:要绘制的文字的数组
+     * int Index 第一个要绘制的文字的索引
+     * int count 要绘制的文字的个数,用来算最后一个文字的`位置,要第一个绘制的文字开始算起
+     * float[]pos 每个字体的位置,同样两两一组
+     */
   }
 }
