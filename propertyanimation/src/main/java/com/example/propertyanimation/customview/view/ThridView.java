@@ -194,6 +194,5 @@ public class ThridView extends View {
     //其他设置
     //只会将水平方向拉伸,高度不变
     textpaint.setTextScaleX(2);
-
   }
 }
