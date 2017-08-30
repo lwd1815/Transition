@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.aigestudio.pagecurl.views.TwistView
+    <com.example.propertyanimation.customview.pageCurl4.views.TwistView
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

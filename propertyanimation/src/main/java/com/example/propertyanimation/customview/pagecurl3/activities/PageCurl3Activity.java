@@ -21,7 +21,7 @@ import java.util.List;
  * @version 1.0.0
  * 
  */
-public class PageCurlActivity extends Activity {
+public class PageCurl3Activity extends Activity {
 	private PageTurnView mPageCurlView;// ·­Ò³¿Ø¼þ
 	private FoldView mFoldView;// ÕÛÒ³¿Ø¼þ
 	private CurveView mCurveView;// ÇúÏß¿Ø¼þ

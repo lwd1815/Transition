@@ -1,14 +1,12 @@
-package com.example.propertyanimation.customview.pageCurl4.activities;
+package com.example.propertyanimation.customview.pagecurl2.activities;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import com.example.propertyanimation.R;
-import com.example.propertyanimation.customview.pageCurl4.views.CurveView;
-import com.example.propertyanimation.customview.pageCurl4.views.FoldView;
-import com.example.propertyanimation.customview.pageCurl4.views.PageTurnView;
-import com.example.propertyanimation.customview.pageCurl4.views.TwistView;
+import com.example.propertyanimation.customview.pagecurl2.views.FoldView;
+import com.example.propertyanimation.customview.pagecurl2.views.PageTurnView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,34 +20,18 @@ import java.util.List;
  * @version 1.0.0
  * 
  */
-public class PageCurlActivity extends Activity {
+public class PageCurl2Activity extends Activity {
 	private PageTurnView mPageCurlView;// ·­Ò³¿Ø¼þ
 	private FoldView mFoldView;// ÕÛÒ³¿Ø¼þ
-	private CurveView mCurveView;// ÇúÏß¿Ø¼þ
-	private TwistView mTwistView;// ÇúÏß¿Ø¼þ
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_curl_page);
+		setContentView(R.layout.activity_curl_page_v2);
 
-		twistPage();
-
-		// curvePage();
-
-		// foldPage();
+		foldPage();
 
 		// turnPage();
-	}
-
-	private void twistPage() {
-		mTwistView = (TwistView) findViewById(R.id.main);
-		mTwistView.setBitmaps(initBitmaps());
-	}
-
-	private void curvePage() {
-		mCurveView = (CurveView) findViewById(R.id.main);
-		mCurveView.setBitmaps(initBitmaps());
 	}
 
 	private void foldPage() {
@@ -85,10 +67,6 @@ public class PageCurlActivity extends Activity {
 		if (null != mFoldView) {
 			mFoldView.slideStop();
 			mFoldView.getSlideHandler().removeCallbacksAndMessages(null);
-		}
-		if (null != mCurveView) {
-			mCurveView.slideStop();
-			mCurveView.getSlideHandler().removeCallbacksAndMessages(null);
 		}
 		super.onDestroy();
 	}

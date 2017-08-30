@@ -45,6 +45,9 @@
 		<activity android:name=".expand.ScrollingActivity" />
 		<activity android:name=".customview.CustomViewActivity"/>
 		<activity android:name=".customview.pagecurl.activities.PageCurlActivity"/>
+		<activity android:name=".customview.pagecurl2.activities.PageCurl2Activity"/>
+		<activity android:name=".customview.pagecurl3.activities.PageCurl3Activity"/>
+		<activity android:name=".customview.pageCurl4.activities.PageCurl4Activity"/>
 	</application>
 
 </manifest>

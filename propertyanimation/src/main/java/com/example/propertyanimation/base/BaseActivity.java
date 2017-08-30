@@ -1,5 +1,6 @@
 package com.example.propertyanimation.base;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -15,7 +16,8 @@ public class BaseActivity extends SupportActivity{
     //IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
     //receiver = new NetBroadcastReceiver();
     //this.registerReceiver(receiver,filter);
-
+    //½ûÖ¹ËùÓÐactivityµÄºáÊúÆÁÇÐ»»
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     ActivityManager.getInstance().addActivity(this);
 
   }

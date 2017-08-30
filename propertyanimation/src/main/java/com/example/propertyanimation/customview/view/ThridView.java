@@ -190,9 +190,12 @@ public class ThridView extends View {
     textpaint.setTextSkewX((float) -0.25);
     //设置是否带有删除线效果
     textpaint.setStrikeThruText(true);
-
+    //设置尺寸大小
+    textpaint.setTextSize(80);
     //其他设置
     //只会将水平方向拉伸,高度不变
     textpaint.setTextScaleX(2);
+
+    canvas.drawText("杨柳依依",10,610,textpaint);
   }
 }

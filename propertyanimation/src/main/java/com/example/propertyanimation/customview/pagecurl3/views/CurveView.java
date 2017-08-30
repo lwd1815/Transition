@@ -23,7 +23,7 @@ import android.widget.Toast;
 /**
  * 曲线View
  * 
- * @author AigeStudio {@link http://blog.csdn.net/aigestudio}
+ * @author AigeStudio @link http://blog.csdn.net/aigestudio
  * @version 1.0.0
  * @since 2014/12/28
  */
@@ -535,7 +535,7 @@ public class CurveView extends View {
 		 * 计算当前页的区域
 		 */
 		canvas.save();
-		canvas.clipRegion(mRegionCurrent);
+		//canvas.clipRegion(mRegionCurrent);
 		canvas.drawBitmap(mBitmaps.get(end - 1), 0, 0, null);
 		canvas.restore();
 
@@ -543,7 +543,7 @@ public class CurveView extends View {
 		 * 计算折叠页的区域
 		 */
 		canvas.save();
-		canvas.clipRegion(mRegionFold);
+		//canvas.clipRegion(mRegionFold);
 
 		canvas.translate(mPointX, mPointY);
 
@@ -569,7 +569,7 @@ public class CurveView extends View {
 		 * 计算下一页的区域
 		 */
 		canvas.save();
-		canvas.clipRegion(mRegionNext);
+		//canvas.clipRegion(mRegionNext);
 		canvas.drawBitmap(mBitmaps.get(start), 0, 0, null);
 		canvas.restore();
 	}
