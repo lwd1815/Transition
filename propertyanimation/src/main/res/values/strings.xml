@@ -17,6 +17,9 @@
 	<string name="title_item_list">Items</string>
 	<string name="title_item_detail">Item Detail</string>
 	<string name="title_activity_scrolling">ScrollingActivity</string>
+
+	<string name="title_activity_test_scroll">TestScrollActivity</string>
+	<string name="title_activity_test_my_rect">TestMyRectActivity</string>
 	\n\n
 	<string name="music_text">
 		作曲 : 刘明汉\n\n

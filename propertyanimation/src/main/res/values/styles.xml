@@ -25,5 +25,8 @@
 		<item name="expandedTitleMargin">32.0dip</item>
 		<item name="statusBarScrim">?colorPrimaryDark</item>
 	</style>
-
+	<style name="AppTheme.NoActionBar">
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+	</style>
 </resources>

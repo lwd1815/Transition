@@ -15,6 +15,7 @@ import com.example.propertyanimation.customview.pagecurl2.activities.PageCurl2Ac
 import com.example.propertyanimation.customview.pagecurl3.activities.PageCurl3Activity;
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
+import com.example.propertyanimation.testcollapsingtoolbarlayout.TestMyRectActivity;
 
 /**
  * 创建者     李文东
@@ -64,6 +65,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
           }else if (position==8){
             Intent intent = new Intent(holder.itemView.getContext(), PageCurl4Activity.class);
             holder.itemView.getContext().startActivity(intent);
+          }else if (position==9){
+            Intent intent = new Intent(holder.itemView.getContext(), TestMyRectActivity.class);
+            holder.itemView.getContext().startActivity(intent);
           }
         }
       });
@@ -71,7 +75,7 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
   }
 
   @Override public int getItemCount() {
-    return 10;
+    return 20;
   }
 
   public static class NormalViewHolder extends RecyclerView.ViewHolder{

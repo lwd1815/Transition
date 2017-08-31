@@ -48,6 +48,16 @@
 		<activity android:name=".customview.pagecurl2.activities.PageCurl2Activity"/>
 		<activity android:name=".customview.pagecurl3.activities.PageCurl3Activity"/>
 		<activity android:name=".customview.pageCurl4.activities.PageCurl4Activity"/>
+		<activity android:name=".testcollapsingtoolbarlayout.ScrollingActivity"/>
+		<activity android:name=".testcollapsingtoolbarlayout.TestActivity"
+				android:label="@string/title_activity_test_my_rect"
+				android:theme="@style/AppTheme.NoActionBar"
+				/>
+		<activity android:name=".testcollapsingtoolbarlayout.TestMyRectActivity"/>
+		<activity android:name=".testcollapsingtoolbarlayout.TestScrollActivity"
+				android:label="@string/title_activity_test_scroll"
+				android:theme="@style/AppTheme.NoActionBar"
+				/>
 	</application>
 
 </manifest>
