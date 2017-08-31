@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		android:versionCode="100"
+		android:versionName="1.0.0"
 		package="com.example.propertyanimation">
+
+	<!-- Required -->
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 	<application
 			android:name=".BaseApplication"
@@ -10,6 +29,33 @@
 			android:roundIcon="@drawable/tm_emoji_s002"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
+
+		<!-- 设置环信应用的AppKey -->
+		<meta-data
+				android:name="EASEMOB_APPKEY"
+				android:value="1102170226178032#lwd" />
+		<!-- 声明sdk所需的service SDK核心功能 -->
+		<service
+				android:name="com.hyphenate.chat.EMChatService"
+				android:exported="true" />
+		<service
+				android:name="com.hyphenate.chat.EMJobService"
+				android:exported="true"
+				android:permission="android.permission.BIND_JOB_SERVICE" />
+		<!-- 声明sdk所需的receiver -->
+		<receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+				<data android:scheme="package" />
+			</intent-filter>
+			<!-- 可选filter -->
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+			</intent-filter>
+		</receiver>
+		<!-- leak的服务 -->
 		<service
 				android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
 				android:enabled="false"
@@ -43,21 +89,24 @@
 		<activity android:name=".expand.ItemListActivity" />
 		<activity android:name=".expand.Main2Activity" />
 		<activity android:name=".expand.ScrollingActivity" />
-		<activity android:name=".customview.CustomViewActivity"/>
-		<activity android:name=".customview.pagecurl.activities.PageCurlActivity"/>
-		<activity android:name=".customview.pagecurl2.activities.PageCurl2Activity"/>
-		<activity android:name=".customview.pagecurl3.activities.PageCurl3Activity"/>
-		<activity android:name=".customview.pageCurl4.activities.PageCurl4Activity"/>
-		<activity android:name=".testcollapsingtoolbarlayout.ScrollingActivity"/>
-		<activity android:name=".testcollapsingtoolbarlayout.TestActivity"
+		<activity android:name=".customview.CustomViewActivity" />
+		<activity android:name=".customview.pagecurl.activities.PageCurlActivity" />
+		<activity android:name=".customview.pagecurl2.activities.PageCurl2Activity" />
+		<activity android:name=".customview.pagecurl3.activities.PageCurl3Activity" />
+		<activity android:name=".customview.pageCurl4.activities.PageCurl4Activity" />
+		<activity android:name=".testcollapsingtoolbarlayout.ScrollingActivity" />
+		<activity
+				android:name=".testcollapsingtoolbarlayout.TestActivity"
 				android:label="@string/title_activity_test_my_rect"
-				android:theme="@style/AppTheme.NoActionBar"
-				/>
-		<activity android:name=".testcollapsingtoolbarlayout.TestMyRectActivity"/>
-		<activity android:name=".testcollapsingtoolbarlayout.TestScrollActivity"
+				android:theme="@style/AppTheme.NoActionBar" />
+		<activity android:name=".testcollapsingtoolbarlayout.TestMyRectActivity" />
+		<activity
+				android:name=".testcollapsingtoolbarlayout.TestScrollActivity"
 				android:label="@string/title_activity_test_scroll"
-				android:theme="@style/AppTheme.NoActionBar"
-				/>
+				android:theme="@style/AppTheme.NoActionBar" />
+		<activity android:name=".chat.SplashActivity" />
+		<activity android:name=".chat.LoginActivity" />
+		<activity android:name=".chat.ChatActivity"></activity>
 	</application>
 
 </manifest>

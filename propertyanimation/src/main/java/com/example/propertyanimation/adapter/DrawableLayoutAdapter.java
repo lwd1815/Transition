@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.propertyanimation.CollapsingToolbarLayoutActivity;
 import com.example.propertyanimation.MainActivity;
 import com.example.propertyanimation.R;
+import com.example.propertyanimation.chat.SplashActivity;
 import com.example.propertyanimation.customview.CustomViewActivity;
 import com.example.propertyanimation.customview.pageCurl4.activities.PageCurl4Activity;
 import com.example.propertyanimation.customview.pagecurl.activities.PageCurlActivity;
@@ -67,6 +68,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==9){
             Intent intent = new Intent(holder.itemView.getContext(), TestMyRectActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==10){
+            Intent intent = new Intent(holder.itemView.getContext(), SplashActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }
