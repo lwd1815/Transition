@@ -1,14 +1,17 @@
 package com.example.propertyanimation.customview.view;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import com.example.propertyanimation.BaseApplication;
 
 /**
  * 创建者     李文东
@@ -235,5 +238,132 @@ public class ThridView extends View {
      * int count 要绘制的文字的个数,用来算最后一个文字的`位置,要第一个绘制的文字开始算起
      * float[]pos 每个字体的位置,同样两两一组
      */
+
+    Paint spaPaint = new Paint();
+    spaPaint.setColor(Color.RED);
+
+    spaPaint.setAntiAlias(true);
+    spaPaint.setStrokeWidth(3);
+    spaPaint.setStyle(Paint.Style.FILL);
+    spaPaint.setTextSize(30);
+    float[]pos = new float[]{
+        80,100,80,200,80,300,80,400
+    };
+
+    canvas.drawPosText("你是傻逼",pos,spaPaint);
+
+    /**(
+     * 沿路径绘制
+     * drawTextOnpath(String text,Path path,float hoffset,float vOffset,Paint paint)
+     * drawTextOnPath(char[]text,int index,int count,Path path,float hOffset,float vOffset,Paint paint)
+     *
+     * 有关截取部分字体绘制相关参数(index,count),
+     *
+     * float hOffset :与路径起始点的水平偏移距离
+     * float vOffset :与路径中心的垂直偏移量
+     */
+
+    Paint sPaint = new Paint();
+    sPaint.setColor(Color.GREEN);
+
+    sPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    sPaint.setStrokeWidth(5);
+    sPaint.setAntiAlias(true);
+    sPaint.setTextSize(50);
+
+    String string = "风萧萧兮易水寒";
+
+    //先创建两个相同的圆形路径,并先画出两个路径的原图
+
+    Path circlesPath = new Path();
+    circlesPath.addCircle(220,180,100, Path.Direction.CCW);
+    canvas.drawPath(circlesPath,sPaint);//绘制出路径原形
+
+    Path circles2Path = new Path();
+    circles2Path.addCircle(500,500,100, Path.Direction.CCW);
+    canvas.drawPath(circles2Path,sPaint);//绘制出路径原形
+
+    sPaint.setColor(Color.RED);
+    canvas.drawTextOnPath(string,circlesPath,0,0,sPaint);
+
+    sPaint.setColor(Color.GRAY);
+    canvas.drawTextOnPath(string,circles2Path,80,80,sPaint);
+
+    /**
+     * 字体样式设置
+     * setTypeFace(typeface)
+     *
+     * 概述:typeface是专门用来设置字体样式的,通过paint.settypeface()来指定,可以指定系统中的字体样式
+     * 也可以指定自定义的样式文件获取,要构建tpeface时,可以指定所用样式的正常体,斜体,粗体等,如果指定样式
+     * 中,没有相关文字的样式,就会用系统默认的样式来显示,一般的默认样式是宋体
+     *
+     * //创建typeface
+     *
+     * typeface creat(String familyName,int style)//直接通过指定字体名来加载系统中自带的文字样式
+     * typeface creat(typeface family,int style)//通过其他的typeface变量来构建文字样式
+     * typeface creatFromAsset(AssetManager mgr,String path)//通过从Asset中获取外部字体来显示字体样式
+     * typeface creatFromFile(File path)//从外部路径来创建文字样式
+     * typeface defaultFromStyle(int style)//创建默认字体
+     *
+     *
+     * Style 是一个变量,style的枚举如下
+     *
+     *Typeface.NORMAL //正常体
+     * Typeface.BOLD //粗体
+     * typeface.ITALIC//斜体
+     * typeface.BOLD_ITALIC//粗斜体
+     *
+     *
+     * //使用系统自带的文字样式有两种方法
+     *
+     * Typeface defaultFromStyle(int style)//创建默认字体
+     * Typeface creat(String familyName,int style)//直接通过指定字体名来加载系统中自带的文字样式
+     *
+     * //其中第一个仅仅是使用系统默认的样式来绘制字体,基本没有可指定性,第二个可以指定样式
+     */
+
+    //使用系统自带字体绘制
+
+    Paint textspaint = new Paint();
+    textspaint.setColor(Color.YELLOW);
+    textspaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    textspaint.setAntiAlias(true);
+    textspaint.setStrokeWidth(3);
+
+    textspaint.setTextSize(30);
+    String familyName="宋体";
+    Typeface font = Typeface.create(familyName, Typeface.NORMAL);
+    textspaint.setTypeface(font);
+    canvas.drawText("楚留香",500,100,textspaint);
+
+    String s = "黑体";
+    textspaint.setColor(Color.BLACK);
+    Typeface fo = Typeface.create(s,Typeface.NORMAL);
+    textspaint.setTypeface(fo);
+    canvas.drawText("赵子龙",500,200,textspaint);
+
+    /**
+     * 自定义字体
+     * 自定义字体需要从外部字体文件加载我们需要的字体,从外部文件加载字形所使用的typeface构造函数
+     * typeFace createFromAsset(AssetManager mgr,String path)//通过从Asset中获取外部字体来显示字体样式
+     * Typeface createFromFile(String path) //直接从路径创建
+     * Typeface createFromFile(File path) //从外部路径来创建样式
+     *
+     * 一般用到`第一个
+     * 首先在Asset下新建一个文件夹,命名为fonts,然后将字体文件jian_luobo.ttf放入其中
+     */
+    //自定义字体 迷你
+
+    Paint customPaint = new Paint();
+    customPaint.setColor(Color.RED);
+    customPaint.setStrokeWidth(3);
+    customPaint.setAntiAlias(true);
+    customPaint.setStyle(Paint.Style.FILL);
+
+    customPaint.setTextSize(60);
+    AssetManager mgr = BaseApplication.mContext.getAssets();
+    Typeface fromAsset = Typeface.createFromAsset(mgr, "fonts/jian_luobo.ttf");
+    customPaint.setTypeface(fromAsset);
+    canvas.drawText("hello WORLD",10,700, customPaint);
   }
 }
