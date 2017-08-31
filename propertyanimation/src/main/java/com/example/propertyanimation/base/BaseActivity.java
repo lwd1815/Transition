@@ -24,7 +24,6 @@ public class BaseActivity extends SupportActivity{
 
   @Override protected void onDestroy() {
     super.onDestroy();
-    //this.unregisterReceiver(receiver);
     ActivityManager.getInstance().finishActivity(this);
   }
 }
