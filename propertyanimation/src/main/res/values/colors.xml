@@ -34,4 +34,5 @@
 
     <color name="loginBtnPressed">#00a1db</color>
     <color name="mainColor">#00acff</color>
+    <color name="btnDisable">#559c9c9c</color>
 </resources>

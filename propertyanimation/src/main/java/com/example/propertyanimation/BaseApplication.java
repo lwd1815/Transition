@@ -13,6 +13,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import cn.bmob.v3.Bmob;
 import com.example.propertyanimation.chat.ChatActivity;
 import com.example.propertyanimation.chat.LoginActivity;
 import com.example.propertyanimation.chat.utils.ThreadUtil;
@@ -75,7 +76,7 @@ public class BaseApplication extends Application implements EMMessageListener,
     EMClient.getInstance().setDebugMode(true);
 
     // 初始化bmob云数据库
-   // Bmob.initialize(this, "f20e2cad2a0cd881b851626e4da3d84c");
+    Bmob.initialize(this, "ea6b31969fdd7f04e5f3eeb81a55c4c1");
 
     // 监听消息
     EMClient.getInstance().chatManager().addMessageListener(this);

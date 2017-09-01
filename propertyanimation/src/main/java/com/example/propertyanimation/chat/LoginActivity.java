@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.propertyanimation.MainActivity;
 import com.example.propertyanimation.R;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMError;
@@ -163,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
             // EMClient.getInstance().groupManager().loadAllGroups();
 
             // 登录成功跳转界面
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this,ChatActivity.class);
             startActivity(intent);
             finish();
           }

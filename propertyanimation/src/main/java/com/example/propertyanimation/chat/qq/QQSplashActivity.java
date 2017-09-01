@@ -30,6 +30,7 @@ public class QQSplashActivity extends BaseDeepActivity {
       @Override public void onAnimationEnd(Animator animator) {
         if (isLogin){
           //跳转到聊天界面
+         startActivity(new Intent(QQSplashActivity.this,QQChatActivity.class));
         }else {
           //跳转到登录界面
           startActivity(new Intent(QQSplashActivity.this,QQLoginActivity.class));

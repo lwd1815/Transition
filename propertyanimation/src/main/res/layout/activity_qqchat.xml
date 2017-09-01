@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical" android:layout_width="match_parent"
+		android:layout_height="match_parent">
+	<include layout="@layout/header"/>
+	<android.support.v4.widget.SwipeRefreshLayout
+			android:id="@+id/srl_refresh"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1">
+		<ListView
+				android:id="@+id/lv_chat"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:divider="@null"
+				android:dividerHeight="0dp"
+				android:layout_height="0dp"/>
+	</android.support.v4.widget.SwipeRefreshLayout>
+	<View
+			android:layout_width="match_parent"
+			android:background="@color/btnDisable"
+			android:layout_height="1dp"/>
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:orientation="horizontal"
+			android:layout_margin="5dp"
+			android:layout_height="wrap_content">
+		<EditText
+				android:layout_width="0dp"
+				android:id="@+id/et_msg"
+				android:layout_weight="1"
+				android:hint="内容"
+				android:layout_height="wrap_content" />
+		<Button
+				android:layout_width="wrap_content"
+				android:id="@+id/bt_send"
+				android:text="发送"
+				android:enabled="false"
+				android:textColor="#fff"
+				android:background="@drawable/btn_send_selector"
+				android:layout_height="wrap_content" />
+	</LinearLayout>
+</LinearLayout>
