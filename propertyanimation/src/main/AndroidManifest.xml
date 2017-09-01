@@ -33,7 +33,7 @@
 		<!-- 设置环信应用的AppKey -->
 		<meta-data
 				android:name="EASEMOB_APPKEY"
-				android:value="1102170226178032#lwd" />
+				android:value="1102170226178032#transition" />
 		<!-- 声明sdk所需的service SDK核心功能 -->
 		<service
 				android:name="com.hyphenate.chat.EMChatService"

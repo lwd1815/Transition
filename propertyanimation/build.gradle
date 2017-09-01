@@ -14,10 +14,10 @@ android {
 
     multiDexEnabled true
 
-    ndk{
-      //此处添加jinlib下面的文件`名就好了
-      abiFilters "armeabi"
-    }
+//    ndk{
+//      //此处添加jinlib下面的文件`名就好了
+//      abiFilters "armeabi"
+//    }
   }
 
 
@@ -26,6 +26,10 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  sourceSets {
+    main.jniLibs.srcDirs = ['libs']
   }
 }
 

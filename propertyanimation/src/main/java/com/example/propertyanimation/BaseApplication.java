@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -18,7 +19,9 @@ import com.example.propertyanimation.chat.utils.ThreadUtil;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
 import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMOptions;
 import com.hyphenate.chat.EMTextMessageBody;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -61,7 +64,7 @@ public class BaseApplication extends Application implements EMMessageListener,
    //setupLeakCanary();
     mRefWatcher=LeakCanary.install(this);
     this.mContext=getApplicationContext();
-   /*
+
     // 初始化环信sdk
     EMOptions options = new EMOptions();
     // 默认添加好友时，true是不需要验证的，false需要验证
@@ -86,7 +89,7 @@ public class BaseApplication extends Application implements EMMessageListener,
     yuluId = soundPool.load(this, R.raw.yulu, 1);
 
     //注册一个监听连接状态的listener
-    EMClient.getInstance().addConnectionListener(this);*/
+    EMClient.getInstance().addConnectionListener(this);
   }
 
   /**
