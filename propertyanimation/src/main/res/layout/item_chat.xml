@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:deepbaytech="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
@@ -20,10 +22,16 @@
             android:gravity="center_vertical"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="60dp"
-                android:background="@drawable/avatar_left"
-                android:layout_height="60dp" />
+            <com.example.propertyanimation.circleimageview.XfermodeRoundImageView
+                android:id="@+id/user_iv"
+                android:layout_width="@dimen/x132"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@drawable/page_img_a"
+                android:layout_gravity="center_vertical"
+                deepbaytech:borderRadius="20dip"
+                android:layout_marginRight="@dimen/x10"
+                deepbaytech:imageType="circle"
+                android:layout_height="@dimen/x132"/>
             <TextView
                 android:id="@+id/tv_msg_receive"
                 android:layout_width="wrap_content"
@@ -54,10 +62,16 @@
                 android:background="@drawable/send_msg_normal"
                 android:paddingLeft="15dp"
                 android:layout_height="wrap_content" />
-            <ImageView
-                android:layout_width="60dp"
-                android:background="@drawable/avatar_10"
-                android:layout_height="60dp" />
+            <com.example.propertyanimation.circleimageview.XfermodeRoundImageView
+                android:id="@+id/user_iv_other"
+                android:layout_width="@dimen/x132"
+                android:layout_marginLeft="@dimen/x10"
+                android:src="@mipmap/test"
+                android:layout_gravity="center_vertical"
+                deepbaytech:borderRadius="20dip"
+                android:layout_marginRight="@dimen/x20"
+                deepbaytech:imageType="circle"
+                android:layout_height="@dimen/x132"/>
         </LinearLayout>
     </RelativeLayout>
 

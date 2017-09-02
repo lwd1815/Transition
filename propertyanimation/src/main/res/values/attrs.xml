@@ -31,4 +31,27 @@
 		<attr name="open_icon" format="reference"/>
 		<attr name="close_icon" format="reference"/>
 	</declare-styleable>
+
+	<declare-styleable name="CircleImageview">
+		<attr format="color" name="borderColor" />
+		<attr format="dimension" name="borderWidth" />
+		<attr format="dimension" name="borderWiderWidth" />
+	</declare-styleable>
+
+	<attr format="dimension" name="borderRadius" />
+	<attr name="imageType">
+		<enum name="circle" value="0" />
+		<enum name="round" value="1" />
+	</attr>
+	<declare-styleable name="RoundImageView">
+		<attr name="borderRadius" />
+		<attr name="imageType" />
+	</declare-styleable>
+	<declare-styleable name="XfermodeRoundImageView">
+		<attr name="borderRadius" />
+		<attr name="imageType" />
+	</declare-styleable>
+	<declare-styleable name="RatioImageView">
+		<attr format="float" name="ratio" />
+	</declare-styleable>
 </resources>
