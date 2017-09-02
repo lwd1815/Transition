@@ -45,7 +45,7 @@ public class QQChatActivity extends BaseDeepActivity
     ButterKnife.bind(this);
     username = getIntent().getStringExtra("username");
     tvTitle.setText("与" + username + "聊天中");
-
+    conversation = EMClient.getInstance().chatManager().getConversation(username);
     //监听消息输入
     etMsg.addTextChangedListener(this);
 
@@ -87,7 +87,6 @@ public class QQChatActivity extends BaseDeepActivity
   }
 
   public void getMessageHistory() {
-    conversation = EMClient.getInstance().chatManager().getConversation(username);
     if (conversation == null) {
       return;
     }
@@ -114,15 +113,19 @@ public class QQChatActivity extends BaseDeepActivity
     EMMessage emMessage = EMMessage.createTxtSendMessage(etMsg.getText().toString(),username);
     //发消息
     EMClient.getInstance().chatManager().sendMessage(emMessage);
-
+    emMessages.add(emMessage);
     chatAdapter.notifyDataSetChanged();
     lvChat.setSelection(emMessages.size());
+    //发送完成后将编辑清零
+    etMsg.setText("");
   }
 
   @Subscribe(threadMode = ThreadMode.MAIN)
   public void onMessageEvent(EMMessage message) {
     //指定会话消息未读数清零
-    conversation.markAllMessagesAsRead();
+    if (conversation!=null) {
+      conversation.markAllMessagesAsRead();
+    }
     emMessages.add(message);
     chatAdapter.notifyDataSetChanged();
     lvChat.setSelection(emMessages.size());

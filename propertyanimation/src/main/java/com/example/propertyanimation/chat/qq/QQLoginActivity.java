@@ -54,7 +54,7 @@ public class QQLoginActivity extends BaseDeepActivity implements View.OnClickLis
             SpUtil.putString(QQLoginActivity.this,SpUtil.KEY_PASSWORD,password);
 
             dialog.dismiss();
-            startActivity(new Intent(QQLoginActivity.this, QQChatActivity.class));
+            startActivity(new Intent(QQLoginActivity.this, QQMainActivity.class));
             finish();
           }
 

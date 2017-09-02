@@ -14,8 +14,9 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import cn.bmob.v3.Bmob;
-import com.example.propertyanimation.chat.ChatActivity;
-import com.example.propertyanimation.chat.LoginActivity;
+import com.example.propertyanimation.chat.qq.QQChatActivity;
+import com.example.propertyanimation.chat.qq.QQLoginActivity;
+import com.example.propertyanimation.chat.qq.QQMainActivity;
 import com.example.propertyanimation.chat.utils.ThreadUtil;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
@@ -143,10 +144,10 @@ public class BaseApplication extends Application implements EMMessageListener,
       soundPool.play(yuluId,1,1,0,0,1);
       // 发送通知
       // 需要先打开主界面，再打开聊天界面
-      Intent mainIntent = new Intent(this, MainActivity.class);
+      Intent mainIntent = new Intent(this, QQMainActivity.class);
       mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-      Intent chatIntent = new Intent(this, ChatActivity.class);
+      Intent chatIntent = new Intent(this, QQChatActivity.class);
       chatIntent.putExtra("username",emMessage.getUserName());
 
       Intent[] intents = new Intent[]{mainIntent,chatIntent};
@@ -175,6 +176,19 @@ public class BaseApplication extends Application implements EMMessageListener,
   @Override public void onCmdMessageReceived(List<EMMessage> list) {
 
   }
+
+  @Override public void onMessageRead(List<EMMessage> list) {
+
+  }
+
+  @Override public void onMessageDelivered(List<EMMessage> list) {
+
+  }
+
+  @Override public void onMessageRecalled(List<EMMessage> list) {
+
+  }
+
 
   private boolean isRunningBack() {
     // 判断当前应用是否运行在后台
@@ -206,7 +220,7 @@ public class BaseApplication extends Application implements EMMessageListener,
           }
           activities.clear();
 
-          Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+          Intent intent = new Intent(getApplicationContext(), QQLoginActivity.class);
           intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
           startActivity(intent);
         }
@@ -216,18 +230,5 @@ public class BaseApplication extends Application implements EMMessageListener,
 
   public void removeActivity(Activity activity) {
     activities.remove(activity);
-  }
-
-
-  @Override public void onMessageRead(List<EMMessage> list) {
-
-  }
-
-  @Override public void onMessageDelivered(List<EMMessage> list) {
-
-  }
-
-  @Override public void onMessageRecalled(List<EMMessage> list) {
-
   }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:id="@+id/lv_contacts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="0dp" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <com.example.propertyanimation.chat.view.SlideBar
+            android:layout_width="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="wrap_content"
+            android:textSize="40sp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ease_show_head_toast_bg"
+            android:textColor="#fff"
+            android:visibility="gone"
+            android:text="A"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>
