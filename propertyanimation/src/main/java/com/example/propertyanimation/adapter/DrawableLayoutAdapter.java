@@ -16,6 +16,7 @@ import com.example.propertyanimation.customview.pagecurl2.activities.PageCurl2Ac
 import com.example.propertyanimation.customview.pagecurl3.activities.PageCurl3Activity;
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
+import com.example.propertyanimation.recycleview.RecyclerActivity;
 import com.example.propertyanimation.testcollapsingtoolbarlayout.TestMyRectActivity;
 
 /**
@@ -71,6 +72,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==10){
             Intent intent = new Intent(holder.itemView.getContext(),  QQSplashActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==11){
+            Intent intent = new Intent(holder.itemView.getContext(),  RecyclerActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }

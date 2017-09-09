@@ -112,7 +112,10 @@
 		<activity android:name=".chat.qq.QQRegistActivity" />
 		<activity android:name=".chat.qq.QQChatActivity" />
 		<activity android:name=".chat.qq.QQAddFriendActivity" />
-		<activity android:name=".chat.qq.QQMainActivity"></activity>
+		<activity android:name=".chat.qq.QQMainActivity" />
+		<activity android:name=".recycleview.RecyclerActivity" />
+		<activity android:name=".recycleview.ListViewActivity" />
+		<activity android:name=".recycleview.GridViewActivity"></activity>
 	</application>
 
 </manifest>
