@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * Created by EtherealPatrick on 2017/2/23.
+ * Created by lwd on 2017/9/13
  */
 
 public class BaseActivity extends SupportActivity{
