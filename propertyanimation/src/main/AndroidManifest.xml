@@ -115,7 +115,8 @@
 		<activity android:name=".chat.qq.QQMainActivity" />
 		<activity android:name=".recycleview.RecyclerActivity" />
 		<activity android:name=".recycleview.ListViewActivity" />
-		<activity android:name=".recycleview.GridViewActivity"></activity>
+		<activity android:name=".recycleview.GridViewActivity" />
+		<activity android:name=".expendlistview.ExpandListViewActivity"></activity>
 	</application>
 
 </manifest>
