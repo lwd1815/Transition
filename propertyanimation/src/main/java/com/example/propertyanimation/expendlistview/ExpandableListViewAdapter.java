@@ -35,27 +35,23 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
 	Context context;
 
 	public ExpandableListViewAdapter(Context context) {
-		// TODO Auto-generated constructor stub
 		mInflater = LayoutInflater.from(context);
 		this.context = context;
 	}
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		// TODO Auto-generated method stub
 		return child[groupPosition][childPosition];
 	}
 
 	@Override
 	public long getChildId(int groupPosition, int childPosition) {
-		// TODO Auto-generated method stub
 		return childPosition;
 	}
 
 	@Override
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		if (convertView == null) {
 			mViewChild = new ViewChild();
 			convertView = mInflater.inflate(
