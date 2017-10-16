@@ -83,6 +83,7 @@ public class ThridView extends View {
     Path cwRectPath = new Path();
     RectF rectF1 = new RectF(290,50,480,200);
     cwRectPath.addRect(rectF1,Path.Direction.CW);
+
     canvas.drawPath(ccwRectpath,linePaint);
     linePaint.setColor(Color.RED);
     canvas.drawPath(cwRectPath,linePaint);

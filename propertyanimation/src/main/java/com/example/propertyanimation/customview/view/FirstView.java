@@ -46,7 +46,6 @@ public class FirstView extends View implements Runnable{
 
      /*
      * 设置画笔样式为描边，圆环嘛……当然不能填充不然就么意思了
-     *
      * 画笔样式分三种：
      * 1.Paint.Style.STROKE：描边
      * 2.Paint.Style.FILL_AND_STROKE：描边并填充
