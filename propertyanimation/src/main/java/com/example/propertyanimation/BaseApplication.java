@@ -121,12 +121,7 @@ public class BaseApplication extends Application implements EMMessageListener,
     // 没有匹配的项，返回为null
     return null;
   }
-  protected RefWatcher setupLeakCanary() {
-    if (LeakCanary.isInAnalyzerProcess(this)){
-      return RefWatcher.DISABLED;
-    }
-    return LeakCanary.install(this);
-  }
+
 
   public static Context getContext(){
     return mContext;

@@ -16,7 +16,6 @@ public class BaseActivity extends SupportActivity{
     //IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
     //receiver = new NetBroadcastReceiver();
     //this.registerReceiver(receiver,filter);
-    //½ûÖ¹ËùÓÐactivityµÄºáÊúÆÁÇÐ»»
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     ActivityManager.getInstance().addActivity(this);
 

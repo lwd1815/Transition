@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * Ó¦ÓÃÖ÷½çÃæ
+ *
  * 
  * @author AigeStudio
  * @since 2014/12/15
@@ -20,7 +20,7 @@ import java.util.List;
  * 
  */
 public class PageCurlActivity extends Activity {
-	private PageTurnView mPageCurlView;// ·­Ò³¿Ø¼þ
+	private PageTurnView mPageCurlView;// ï¿½ï¿½Ò³ï¿½Ø¼ï¿½
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

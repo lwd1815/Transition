@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.RegionIterator;
 import android.support.annotation.Nullable;
@@ -69,6 +71,58 @@ public class FourView extends View{
     Region region = new Region(10,10,100,100);
     region.set(100,100,200,200);
     drawRegion(canvas,region,firstPaint);
+    /**
+     * 使用setPath()构造不规则区域
+     * path 用来构造的区域路径
+     * Region clip 与前面的path所构造的路径取交集,并将两交集设置为最终的区域
+     */
+    Paint seconPaint =new Paint();
+    seconPaint.setColor(Color.GREEN);
+    seconPaint.setAntiAlias(true);
+    seconPaint.setStrokeWidth(3);
+    seconPaint.setStyle(Paint.Style.STROKE);
+
+    //椭圆区域
+    Path ovalPath = new Path();
+    RectF rectF = new RectF(50,50,200,500);
+    ovalPath.addOval(rectF,Path.Direction.CCW);
+    //setPath 时,传入一个比椭圆区域小的矩形区域,让去交集
+    Region ren = new Region();
+    ren.setPath(ovalPath,new Region(50,50,200,200));
+    //画出路径
+    drawRegions(canvas,ren,seconPaint);
+
+    /**
+     * 矩形集枚举区域-RegionIterator类
+     * 对于特定的区域，我们都可以使用多个矩形来表示其大致形状。事
+     * 实上，如果矩形足够小，一定数量的矩形就能够精确表示区域的形状，
+     * 也就是说，一定数量的矩形所合成的形状，也可以代表区域的形状。
+     * RegionIterator类，实现了获取组成区域的矩形集的功能，
+     * 其实RegionIterator类非常简单，总共就两个函数，一个构造函数和一个获取下一个矩形的函数；
+     *
+     * RegionIterator(Region region)//根据区域构建对应的矩形集
+     * boolean next(Rect r)//获取下一个矩形,结果保存在参数Rect r中
+     *
+     * 由于在Canvas中没有直接绘制Region的函数,我们想要绘制一个区域,就只能通过利用RegionIterator构造矩形集来逼近的显示区域
+     *
+     * 区域的合并,交叉等操作
+     * 无论是区域还是矩形，都会涉及到与另一个区域的一些操作，比如取交集、取并集等，涉及到的函数有：
+     * public final boolean union(Rect r)
+       public boolean op(Rect r, Op op) {
+       public boolean op(int left, int top, int right, int bottom, Op op)
+       public boolean op(Region region, Op op)
+       public boolean op(Rect rect, Region region, Op op)
+
+
+     */
+  }
+
+  private void drawRegions(Canvas canvas, Region ren, Paint seconPaint) {
+    RegionIterator iter = new RegionIterator(ren);
+    Rect rect = new Rect();
+    while (iter.next(rect)){
+      canvas.drawRect(rect,seconPaint);
+    }
   }
 
   private void drawRegion(Canvas canvas, Region region, Paint firstPaint) {
@@ -78,4 +132,6 @@ public class FourView extends View{
       canvas.drawRect(r,firstPaint);
     }
   }
+
+
 }

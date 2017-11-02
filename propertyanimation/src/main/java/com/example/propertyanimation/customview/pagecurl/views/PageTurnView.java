@@ -15,39 +15,39 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * ·­Ò³View
+ *
  * 
  * @author AigeStudio {@link http://blog.csdn.net/aigestudio}
  * @version 1.0.0
  * @since 2014/12/20
  */
 public class PageTurnView extends View {
-	private static final float TEXT_SIZE_NORMAL = 1 / 40F, TEXT_SIZE_LARGER = 1 / 20F;// ±ê×¼ÎÄ×Ö³ß´çºÍ´óºÅÎÄ×Ö³ß´çµÄÕ¼±È
-	private static final float AUTO_AREA_LEFT = 1 / 5F, AUTO_AREA_RIGHT = 4 / 5F;// ¿Ø¼þ×óÓÒ²à×Ô¶¯»¬¶¯ÇøÓòÕ¼±È
-	private static final float MOVE_VALID = 1 / 100F;// ÒÆ¶¯ÊÂ¼þµÄÓÐÐ§¾àÀëÕ¼±È
+	private static final float TEXT_SIZE_NORMAL = 1 / 40F, TEXT_SIZE_LARGER = 1 / 20F;// ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ö³ß´ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½ï¿½Õ¼ï¿½ï¿½
+	private static final float AUTO_AREA_LEFT = 1 / 5F, AUTO_AREA_RIGHT = 4 / 5F;// ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
+	private static final float MOVE_VALID = 1 / 100F;// ï¿½Æ¶ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
 
-	private TextPaint mTextPaint;// ÎÄ±¾»­±Ê
-	private Context mContext;// ÉÏÏÂÎÄ»·¾³ÒýÓÃ
+	private TextPaint mTextPaint;// ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Context mContext;// ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	private List<Bitmap> mBitmaps;// Î»Í¼Êý¾ÝÁÐ±í
+	private List<Bitmap> mBitmaps;// Î»Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 
-	private int pageIndex;// µ±Ç°ÏÔÊ¾mBitmapsÊý¾ÝµÄÏÂ±ê
-	private int mViewWidth, mViewHeight;// ¿Ø¼þ¿í¸ß
+	private int pageIndex;// ï¿½ï¿½Ç°ï¿½ï¿½Ê¾mBitmapsï¿½ï¿½ï¿½Ýµï¿½ï¿½Â±ï¿½
+	private int mViewWidth, mViewHeight;// ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½
 
-	private float mTextSizeNormal, mTextSizeLarger;// ±ê×¼ÎÄ×Ö³ß´çºÍ´óºÅÎÄ×Ö³ß´ç
-	private float mClipX;// ²Ã¼ôÓÒ¶Ëµã×ø±ê
-	private float mAutoAreaLeft, mAutoAreaRight;// ¿Ø¼þ×ó²àºÍÓÒ²à×Ô¶¯Îü¸½µÄÇøÓò
-	private float mCurPointX;// Ö¸¼â´¥ÅöÆÁÄ»Ê±µãXµÄ×ø±êÖµ
-	private float mMoveValid;// ÒÆ¶¯ÊÂ¼þµÄÓÐÐ§¾àÀë
+	private float mTextSizeNormal, mTextSizeLarger;// ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ö³ß´ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½
+	private float mClipX;// ï¿½Ã¼ï¿½ï¿½Ò¶Ëµï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mAutoAreaLeft, mAutoAreaRight;// ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mCurPointX;// Ö¸ï¿½â´¥ï¿½ï¿½ï¿½ï¿½Ä»Ê±ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+	private float mMoveValid;// ï¿½Æ¶ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
 
-	private boolean isNextPage, isLastPage;// ÊÇ·ñ¸ÃÏÔÊ¾ÏÂÒ»Ò³¡¢ÊÇ·ñ×îºóÒ»Ò³µÄ±êÊ¶Öµ
+	private boolean isNextPage, isLastPage;// ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½Ä±ï¿½Ê¶Öµ
 
 	public PageTurnView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		mContext = context;
 
 		/*
-		 * ÊµÀý»¯ÎÄ±¾»­±Ê²¢ÉèÖÃ²ÎÊý
+		 * Êµï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 		 */
 		mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.LINEAR_TEXT_FLAG);
 		mTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -55,45 +55,45 @@ public class PageTurnView extends View {
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		// Ã¿´Î´¥·¢TouchEventÖØÖÃisNextPageÎªtrue
+		// Ã¿ï¿½Î´ï¿½ï¿½ï¿½TouchEventï¿½ï¿½ï¿½ï¿½isNextPageÎªtrue
 		isNextPage = true;
 
 		/*
-		 * ÅÐ¶Ïµ±Ç°ÊÂ¼þÀàÐÍ
+		 * ï¿½Ð¶Ïµï¿½Ç°ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		switch (event.getAction() & MotionEvent.ACTION_MASK) {
-		case MotionEvent.ACTION_DOWN:// ´¥ÃþÆÁÄ»Ê±
-			// »ñÈ¡µ±Ç°ÊÂ¼þµãx×ø±ê
+		case MotionEvent.ACTION_DOWN:// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Ê±
+			// ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Â¼ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½
 			mCurPointX = event.getX();
 
 			/*
-			 * Èç¹ûÊÂ¼þµãÎ»ÓÚ»Ø¹öÇøÓò
+			 * ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Î»ï¿½Ú»Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½
 			 */
 			if (mCurPointX < mAutoAreaLeft) {
-				// ÄÇ¾Í²»·­ÏÂÒ»Ò³ÁË¶øÊÇÉÏÒ»Ò³
+				// ï¿½Ç¾Í²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 				isNextPage = false;
 				pageIndex--;
 				mClipX = mCurPointX;
 				invalidate();
 			}
 			break;
-		case MotionEvent.ACTION_MOVE:// »¬¶¯Ê±
+		case MotionEvent.ACTION_MOVE:// ï¿½ï¿½ï¿½ï¿½Ê±
 			float SlideDis = mCurPointX - event.getX();
 			if (Math.abs(SlideDis) > mMoveValid) {
-				// »ñÈ¡´¥ÃþµãµÄx×ø±ê
+				// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½
 				mClipX = event.getX();
 
 				invalidate();
 			}
 			break;
-		case MotionEvent.ACTION_UP:// ´¥µãÌ§ÆðÊ±
-			// ÅÐ¶ÏÊÇ·ñÐèÒª×Ô¶¯»¬¶¯
+		case MotionEvent.ACTION_UP:// ï¿½ï¿½ï¿½ï¿½Ì§ï¿½ï¿½Ê±
+			// ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
 			judgeSlideAuto();
 
 			/*
-			 * Èç¹ûµ±Ç°Ò³²»ÊÇ×îºóÒ»Ò³
-			 * Èç¹ûÊÇÐèÒª·­ÏÂÒ»Ò³
-			 * ²¢ÇÒÉÏÒ»Ò³ÒÑ±»clipµô
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»Ò³
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½Ñ±ï¿½clipï¿½ï¿½
 			 */
 			if (!isLastPage && isNextPage && mClipX <= 0) {
 				pageIndex++;
@@ -106,12 +106,12 @@ public class PageTurnView extends View {
 	}
 
 	/**
-	 * ÅÐ¶ÏÊÇ·ñÐèÒª×Ô¶¯»¬¶¯
-	 * ¸ù¾Ý²ÎÊýµÄµ±Ç°ÖµÅÐ¶Ï×Ô¶¯»¬¶¯
+	 * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½Äµï¿½Ç°Öµï¿½Ð¶ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void judgeSlideAuto() {
 		/*
-		 * Èç¹û²Ã¼ôµÄÓÒ¶Ëµã×ø±êÔÚ¿Ø¼þ×ó¶ËÊ®·ÖÖ®Ò»µÄÇøÓòÄÚ£¬ÄÇÃ´ÎÒÃÇÖ±½ÓÈÃÆä×Ô¶¯»¬µ½¿Ø¼þ×ó¶Ë
+		 * ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Ò¶Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿Ø¼ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½Ö®Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½
 		 */
 		if (mClipX < mAutoAreaLeft) {
 			while (mClipX > 0) {
@@ -120,7 +120,7 @@ public class PageTurnView extends View {
 			}
 		}
 		/*
-		 * Èç¹û²Ã¼ôµÄÓÒ¶Ëµã×ø±êÔÚ¿Ø¼þÓÒ¶ËÊ®·ÖÖ®Ò»µÄÇøÓòÄÚ£¬ÄÇÃ´ÎÒÃÇÖ±½ÓÈÃÆä×Ô¶¯»¬µ½¿Ø¼þÓÒ¶Ë
+		 * ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½Ò¶Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿Ø¼ï¿½ï¿½Ò¶ï¿½Ê®ï¿½ï¿½Ö®Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ò¶ï¿½
 		 */
 		if (mClipX > mAutoAreaRight) {
 			while (mClipX < mViewWidth) {
@@ -132,31 +132,31 @@ public class PageTurnView extends View {
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		// »ñÈ¡¿Ø¼þ¿í¸ß
+		// ï¿½ï¿½È¡ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½
 		mViewWidth = w;
 		mViewHeight = h;
 
-		// ³õÊ¼»¯Î»Í¼Êý¾Ý
+		// ï¿½ï¿½Ê¼ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
 		initBitmaps();
 
-		// ¼ÆËãÎÄ×Ö³ß´ç
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½
 		mTextSizeNormal = TEXT_SIZE_NORMAL * mViewHeight;
 		mTextSizeLarger = TEXT_SIZE_LARGER * mViewHeight;
 
-		// ³õÊ¼»¯²Ã¼ôÓÒ¶Ëµã×ø±ê
+		// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½Ò¶Ëµï¿½ï¿½ï¿½ï¿½ï¿½
 		mClipX = mViewWidth;
 
-		// ¼ÆËã¿Ø¼þ×ó²àºÍÓÒ²à×Ô¶¯Îü¸½µÄÇøÓò
+		// ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mAutoAreaLeft = mViewWidth * AUTO_AREA_LEFT;
 		mAutoAreaRight = mViewWidth * AUTO_AREA_RIGHT;
 
-		// ¼ÆËãÒ»¶ÈµÄÓÐÐ§¾àÀë
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Èµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
 		mMoveValid = mViewWidth * MOVE_VALID;
 	}
 
 	/**
-	 * ³õÊ¼»¯Î»Í¼Êý¾Ý
-	 * Ëõ·ÅÎ»Í¼³ß´çÓëÆÁÄ»Æ¥Åä
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Æ¥ï¿½ï¿½
 	 */
 	private void initBitmaps() {
 		List<Bitmap> temp = new ArrayList<Bitmap>();
@@ -170,67 +170,67 @@ public class PageTurnView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		/*
-		 * Èç¹ûÊý¾ÝÎª¿ÕÔòÏÔÊ¾Ä¬ÈÏÌáÊ¾ÎÄ±¾
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ä¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 		 */
 		if (null == mBitmaps || mBitmaps.size() == 0) {
 			defaultDisplay(canvas);
 			return;
 		}
 
-		// »æÖÆÎ»Í¼
+		// ï¿½ï¿½ï¿½ï¿½Î»Í¼
 		drawBtimaps(canvas);
 	}
 
 	/**
-	 * Ä¬ÈÏÏÔÊ¾
+	 * Ä¬ï¿½ï¿½ï¿½ï¿½Ê¾
 	 * 
 	 * @param canvas
-	 *            Canvas¶ÔÏó
+	 *            Canvasï¿½ï¿½ï¿½ï¿½
 	 */
 	private void defaultDisplay(Canvas canvas) {
-		// »æÖÆµ×É«
+		// ï¿½ï¿½ï¿½Æµï¿½É«
 		canvas.drawColor(Color.WHITE);
 
-		// »æÖÆ±êÌâÎÄ±¾
+		// ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 		mTextPaint.setTextSize(mTextSizeLarger);
 		mTextPaint.setColor(Color.RED);
 		canvas.drawText("FBI WARNING", mViewWidth / 2, mViewHeight / 4, mTextPaint);
 
-		// »æÖÆÌáÊ¾ÎÄ±¾
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 		mTextPaint.setTextSize(mTextSizeNormal);
 		mTextPaint.setColor(Color.BLACK);
 		canvas.drawText("Please set data use setBitmaps method", mViewWidth / 2, mViewHeight / 3, mTextPaint);
 	}
 
 	/**
-	 * »æÖÆÎ»Í¼
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼
 	 * 
 	 * @param canvas
-	 *            Canvas¶ÔÏó
+	 *            Canvasï¿½ï¿½ï¿½ï¿½
 	 */
 	private void drawBtimaps(Canvas canvas) {
-		// »æÖÆÎ»Í¼Ç°ÖØÖÃisLastPageÎªfalse
+		// ï¿½ï¿½ï¿½ï¿½Î»Í¼Ç°ï¿½ï¿½ï¿½ï¿½isLastPageÎªfalse
 		isLastPage = false;
 
-		// ÏÞÖÆpageIndexµÄÖµ·¶Î§
+		// ï¿½ï¿½ï¿½ï¿½pageIndexï¿½ï¿½Öµï¿½ï¿½Î§
 		pageIndex = pageIndex < 0 ? 0 : pageIndex;
 		pageIndex = pageIndex > mBitmaps.size() ? mBitmaps.size() : pageIndex;
 
-		// ¼ÆËãÊý¾ÝÆðÊ¼Î»ÖÃ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 		int start = mBitmaps.size() - 2 - pageIndex;
 		int end = mBitmaps.size() - pageIndex;
 
 		/*
-		 * Èç¹ûÊý¾ÝÆðµãÎ»ÖÃÐ¡ÓÚ0Ôò±íÊ¾µ±Ç°ÒÑ¾­µ½ÁË×îºóÒ»ÕÅÍ¼Æ¬
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ð¡ï¿½ï¿½0ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬
 		 */
 		if (start < 0) {
-			// ´ËÊ±ÉèÖÃisLastPageÎªtrue
+			// ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½isLastPageÎªtrue
 			isLastPage = true;
 
-			// ²¢ÏÔÊ¾ÌáÊ¾ÐÅÏ¢
+			// ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
 			showToast("This is fucking lastest page");
 
-			// Ç¿ÖÆÖØÖÃÆðÊ¼Î»ÖÃ
+			// Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 			start = 0;
 			end = 1;
 		}
@@ -239,8 +239,8 @@ public class PageTurnView extends View {
 			canvas.save();
 
 			/*
-			 * ½ö²Ã¼ôÎ»ÓÚ×î¶¥²ãµÄ»­²¼ÇøÓò
-			 * Èç¹ûµ½ÁËÄ©Ò³Ôò²»ÔÚÖ´ÐÐ²Ã¼ô
+			 * ï¿½ï¿½ï¿½Ã¼ï¿½Î»ï¿½ï¿½ï¿½î¶¥ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä©Ò³ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð²Ã¼ï¿½
 			 */
 			if (!isLastPage && i == end - 1) {
 				canvas.clipRect(0, 0, mClipX, mViewHeight);
@@ -252,20 +252,20 @@ public class PageTurnView extends View {
 	}
 
 	/**
-	 * ÉèÖÃÎ»Í¼Êý¾Ý
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param bitmaps
-	 *            Î»Í¼Êý¾ÝÁÐ±í
+	 *            Î»Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	public synchronized void setBitmaps(List<Bitmap> bitmaps) {
 		/*
-		 * Èç¹ûÊý¾ÝÎª¿ÕÔòÅ×³öÒì³£
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£
 		 */
 		if (null == bitmaps || bitmaps.size() == 0)
 			throw new IllegalArgumentException("no bitmap to display");
 
 		/*
-		 * Èç¹ûÊý¾Ý³¤¶ÈÐ¡ÓÚ2ÔòGGË¼ÃÜ´ï
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½2ï¿½ï¿½GGË¼ï¿½Ü´ï¿½
 		 */
 		if (bitmaps.size() < 2)
 			throw new IllegalArgumentException("fuck you and fuck to use imageview");
@@ -275,10 +275,10 @@ public class PageTurnView extends View {
 	}
 
 	/**
-	 * ToastÏÔÊ¾
+	 * Toastï¿½ï¿½Ê¾
 	 * 
 	 * @param msg
-	 *            ToastÏÔÊ¾ÎÄ±¾
+	 *            Toastï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 	 */
 	private void showToast(Object msg) {
 		Toast.makeText(mContext, msg.toString(), Toast.LENGTH_SHORT).show();

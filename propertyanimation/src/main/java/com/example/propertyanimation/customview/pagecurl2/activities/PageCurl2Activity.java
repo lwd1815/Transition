@@ -13,16 +13,14 @@ import java.util.List;
 
 
 /**
- * 应用主界面
- * 
  * @author AigeStudio
  * @since 2014/12/15
  * @version 1.0.0
  * 
  */
 public class PageCurl2Activity extends Activity {
-	private PageTurnView mPageCurlView;// 翻页控件
-	private FoldView mFoldView;// 折页控件
+	private PageTurnView mPageCurlView;//
+	private FoldView mFoldView;//
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
