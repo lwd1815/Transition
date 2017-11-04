@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Transition.iml" filepath="$PROJECT_DIR$/Transition.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/propertyanimation/propertyanimation.iml" filepath="$PROJECT_DIR$/propertyanimation/propertyanimation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/refreshview/refreshview.iml" filepath="$PROJECT_DIR$/refreshview/refreshview.iml" />
     </modules>
   </component>
 </project>
