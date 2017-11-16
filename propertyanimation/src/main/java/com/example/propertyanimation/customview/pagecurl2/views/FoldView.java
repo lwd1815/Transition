@@ -21,59 +21,59 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * ÕÛµþView
+ * ï¿½Ûµï¿½View
  * 
  * @author AigeStudio @link http://blog.csdn.net/aigestudio
  * @version 1.0.0
  * @since 2014/12/27
  */
 public class FoldView extends View {
-	private static final float VALUE_ADDED = 1 / 500F;// ¾«¶È¸½¼ÓÖµÕ¼±È
-	private static final float BUFF_AREA = 1 / 50F;// µ×²¿»º³åÇøÓòÕ¼±È
-	private static final float AUTO_AREA_BUTTOM_RIGHT = 3 / 4F, AUTO_AREA_BUTTOM_LEFT = 1 / 8F;// ÓÒÏÂ½ÇºÍ×ó²à×Ô»¬ÇøÓòÕ¼±È
-	private static final float AUTO_SLIDE_BL_V = 1 / 25F, AUTO_SLIDE_BR_V = 1 / 100F;// »¬¶¯ËÙ¶ÈÕ¼±È
-	private static final float TEXT_SIZE_NORMAL = 1 / 40F, TEXT_SIZE_LARGER = 1 / 20F;// ±ê×¼ÎÄ×Ö³ß´çºÍ´óºÅÎÄ×Ö³ß´çµÄÕ¼±È
+	private static final float VALUE_ADDED = 1 / 500F;// ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½ÖµÕ¼ï¿½ï¿½
+	private static final float BUFF_AREA = 1 / 50F;// ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
+	private static final float AUTO_AREA_BUTTOM_RIGHT = 3 / 4F, AUTO_AREA_BUTTOM_LEFT = 1 / 8F;// ï¿½ï¿½ï¿½Â½Çºï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½
+	private static final float AUTO_SLIDE_BL_V = 1 / 25F, AUTO_SLIDE_BR_V = 1 / 100F;// ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½Õ¼ï¿½ï¿½
+	private static final float TEXT_SIZE_NORMAL = 1 / 40F, TEXT_SIZE_LARGER = 1 / 20F;// ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ö³ß´ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½ï¿½Õ¼ï¿½ï¿½
 
-	private List<Bitmap> mBitmaps;// Î»Í¼Êý¾ÝÁÐ±í
+	private List<Bitmap> mBitmaps;// Î»Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 
-	private SlideHandler mSlideHandler;// »¬¶¯´¦ÀíHandler
-	private Paint mPaint;// »­±Ê
-	private TextPaint mTextPaint;// ÎÄ±¾»­±Ê
-	private Context mContext;// ÉÏÏÂÎÄ»·¾³ÒýÓÃ
+	private SlideHandler mSlideHandler;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Handler
+	private Paint mPaint;// ï¿½ï¿½ï¿½ï¿½
+	private TextPaint mTextPaint;// ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Context mContext;// ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-	private Path mPath;// ÕÛµþÂ·¾¶
-	private Path mPathFoldAndNext;// Ò»¸ö°üº¬ÕÛµþºÍÏÂÒ»Ò³ÇøÓòµÄPath
+	private Path mPath;// ï¿½Ûµï¿½Â·ï¿½ï¿½
+	private Path mPathFoldAndNext;// Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Path
 
-	private Region mRegionShortSize;// ¶Ì±ßµÄÓÐÐ§ÇøÓò
-	private Region mRegionCurrent;// µ±Ç°Ò³ÇøÓò£¬ÆäÊµ¾ÍÊÇ¿Ø¼þµÄ´óÐ¡
+	private Region mRegionShortSize;// ï¿½Ì±ßµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+	private Region mRegionCurrent;// ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ç¿Ø¼ï¿½ï¿½Ä´ï¿½Ð¡
 
-	private int mViewWidth, mViewHeight;// ¿Ø¼þ¿í¸ß
-	private int mPageIndex;// µ±Ç°ÏÔÊ¾mBitmapsÊý¾ÝµÄÏÂ±ê
+	private int mViewWidth, mViewHeight;// ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½
+	private int mPageIndex;// ï¿½ï¿½Ç°ï¿½ï¿½Ê¾mBitmapsï¿½ï¿½ï¿½Ýµï¿½ï¿½Â±ï¿½
 
-	private float mPointX, mPointY;// ÊÖÖ¸´¥ÃþµãµÄ×ø±ê
-	private float mValueAdded;// ¾«¶È¸½¼õÖµ
-	private float mBuffArea;// µ×²¿»º³åÇøÓò
-	private float mAutoAreaButtom, mAutoAreaRight, mAutoAreaLeft;// ÓÒÏÂ½ÇºÍ×ó²à×Ô»¬ÇøÓò
-	private float mStart_X, mStart_Y;// Ö±ÏßÆðµã×ø±ê
-	private float mAutoSlideV_BL, mAutoSlideV_BR;// »¬¶¯ËÙ¶È
-	private float mTextSizeNormal, mTextSizeLarger;// ±ê×¼ÎÄ×Ö³ß´çºÍ´óºÅÎÄ×Ö³ß´ç
-	private float mDegrees;// µ±Ç°Y±ß³¤ÓëYÖáµÄ¼Ð½Ç
+	private float mPointX, mPointY;// ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mValueAdded;// ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½Öµ
+	private float mBuffArea;// ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mAutoAreaButtom, mAutoAreaRight, mAutoAreaLeft;// ï¿½ï¿½ï¿½Â½Çºï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mStart_X, mStart_Y;// Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private float mAutoSlideV_BL, mAutoSlideV_BR;// ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
+	private float mTextSizeNormal, mTextSizeLarger;// ï¿½ï¿½×¼ï¿½ï¿½ï¿½Ö³ß´ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½
+	private float mDegrees;// ï¿½ï¿½Ç°Yï¿½ß³ï¿½ï¿½ï¿½Yï¿½ï¿½Ä¼Ð½ï¿½
 
-	private boolean isSlide, isLastPage, isNextPage;// ÊÇ·ñÖ´ÐÐ»¬¶¯¡¢ÊÇ·ñÒÑµ½×îºóÒ»Ò³¡¢ÊÇ·ñ¿ÉÏÔÊ¾ÏÂÒ»Ò³µÄ±êÊ¶Öµ
+	private boolean isSlide, isLastPage, isNextPage;// ï¿½Ç·ï¿½Ö´ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò»Ò³ï¿½Ä±ï¿½Ê¶Öµ
 
-	private Slide mSlide;// ¶¨Òåµ±Ç°»¬¶¯ÊÇÍù×óÏÂ»¬»¹ÊÇÓÒÏÂ»¬
+	private Slide mSlide;// ï¿½ï¿½ï¿½åµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½
 
 	/**
-	 * Ã¶¾ÙÀà¶¨Òå»¬¶¯·½Ïò
+	 * Ã¶ï¿½ï¿½ï¿½à¶¨ï¿½å»¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private enum Slide {
 		LEFT_BOTTOM, RIGHT_BOTTOM
 	}
 
-	private Ratio mRatio;// ¶¨Òåµ±Ç°ÕÛµþ±ß³¤
+	private Ratio mRatio;// ï¿½ï¿½ï¿½åµ±Ç°ï¿½Ûµï¿½ï¿½ß³ï¿½
 
 	/**
-	 * Ã¶¾ÙÀà¶¨Òå³¤±ß¶Ì±ß
+	 * Ã¶ï¿½ï¿½ï¿½à¶¨ï¿½å³¤ï¿½ß¶Ì±ï¿½
 	 */
 	private enum Ratio {
 		LONG, SHORT
@@ -84,80 +84,80 @@ public class FoldView extends View {
 		mContext = context;
 
 		/*
-		 * ÊµÀý»¯ÎÄ±¾»­±Ê²¢ÉèÖÃ²ÎÊý
+		 * Êµï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 		 */
 		mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.LINEAR_TEXT_FLAG);
 		mTextPaint.setTextAlign(Paint.Align.CENTER);
 
 		/*
-		 * ÊµÀý»¯»­±Ê¶ÔÏó²¢ÉèÖÃ²ÎÊý
+		 * Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 		 */
 		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeWidth(2);
 
 		/*
-		 * ÊµÀý»¯Â·¾¶¶ÔÏó
+		 * Êµï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		mPath = new Path();
 		mPathFoldAndNext = new Path();
 
 		/*
-		 * ÊµÀý»¯ÇøÓò¶ÔÏó
+		 * Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		mRegionShortSize = new Region();
 		mRegionCurrent = new Region();
 
-		// ÊµÀý»¯»¬¶¯Handler´¦ÀíÆ÷
+		// Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Handlerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mSlideHandler = new SlideHandler();
 	}
 
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		/*
-		 * »ñÈ¡¿Ø¼þ¿í¸ß
+		 * ï¿½ï¿½È¡ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½
 		 */
 		mViewWidth = w;
 		mViewHeight = h;
 
-		// ³õÊ¼»¯Î»Í¼Êý¾Ý
+		// ï¿½ï¿½Ê¼ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
 		if (null != mBitmaps) {
 			initBitmaps();
 		}
 
-		// ¼ÆËãÎÄ×Ö³ß´ç
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ß´ï¿½
 		mTextSizeNormal = TEXT_SIZE_NORMAL * mViewHeight;
 		mTextSizeLarger = TEXT_SIZE_LARGER * mViewHeight;
 
-		// ¼ÆËã¾«¶È¸½¼ÓÖµ
+		// ï¿½ï¿½ï¿½ã¾«ï¿½È¸ï¿½ï¿½ï¿½Öµ
 		mValueAdded = mViewHeight * VALUE_ADDED;
 
-		// ¼ÆËãµ×²¿»º³åÇøÓò
+		// ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mBuffArea = mViewHeight * BUFF_AREA;
 
 		/*
-		 * ¼ÆËã×Ô»¬Î»ÖÃ
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½Î»ï¿½ï¿½
 		 */
 		mAutoAreaButtom = mViewHeight * AUTO_AREA_BUTTOM_RIGHT;
 		mAutoAreaRight = mViewWidth * AUTO_AREA_BUTTOM_RIGHT;
 		mAutoAreaLeft = mViewWidth * AUTO_AREA_BUTTOM_LEFT;
 
-		// ¼ÆËã¶Ì±ßµÄÓÐÐ§ÇøÓò
+		// ï¿½ï¿½ï¿½ï¿½Ì±ßµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
 		computeShortSizeRegion();
 
 		/*
-		 * ¼ÆËã»¬¶¯ËÙ¶È
+		 * ï¿½ï¿½ï¿½ã»¬ï¿½ï¿½ï¿½Ù¶ï¿½
 		 */
 		mAutoSlideV_BL = mViewWidth * AUTO_SLIDE_BL_V;
 		mAutoSlideV_BR = mViewWidth * AUTO_SLIDE_BR_V;
 
-		// ¼ÆËãµ±Ç°Ò³ÇøÓò
+		// ï¿½ï¿½ï¿½ãµ±Ç°Ò³ï¿½ï¿½ï¿½ï¿½
 		mRegionCurrent.set(0, 0, mViewWidth, mViewHeight);
 	}
 
 	/**
-	 * ³õÊ¼»¯Î»Í¼Êý¾Ý
-	 * Ëõ·ÅÎ»Í¼³ß´çÓëÆÁÄ»Æ¥Åä
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Æ¥ï¿½ï¿½
 	 */
 	private void initBitmaps() {
 		List<Bitmap> temp = new ArrayList<Bitmap>();
@@ -169,44 +169,44 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * ¼ÆËã¶Ì±ßµÄÓÐÐ§ÇøÓò
+	 * ï¿½ï¿½ï¿½ï¿½Ì±ßµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void computeShortSizeRegion() {
-		// ¶Ì±ßÔ²ÐÎÂ·¾¶¶ÔÏó
+		// ï¿½Ì±ï¿½Ô²ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Path pathShortSize = new Path();
 
-		// ÓÃÀ´×°ÔØPath±ß½çÖµµÄRectF¶ÔÏó
+		// ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Pathï¿½ß½ï¿½Öµï¿½ï¿½RectFï¿½ï¿½ï¿½ï¿½
 		RectF rectShortSize = new RectF();
 
-		// Ìí¼ÓÔ²ÐÎµ½Path
+		// ï¿½ï¿½ï¿½Ô²ï¿½Îµï¿½Path
 		pathShortSize.addCircle(0, mViewHeight, mViewWidth, Path.Direction.CCW);
 
-		// ¼ÆËã±ß½ç
+		// ï¿½ï¿½ï¿½ï¿½ß½ï¿½
 		pathShortSize.computeBounds(rectShortSize, true);
 
-		// ½«Path×ª»¯ÎªRegion
+		// ï¿½ï¿½Path×ªï¿½ï¿½ÎªRegion
 		mRegionShortSize.setPath(pathShortSize, new Region((int) rectShortSize.left, (int) rectShortSize.top, (int) rectShortSize.right, (int) rectShortSize.bottom));
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		/*
-		 * Èç¹ûÊý¾ÝÎª¿ÕÔòÏÔÊ¾Ä¬ÈÏÌáÊ¾ÎÄ±¾
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ä¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 		 */
 		if (null == mBitmaps || mBitmaps.size() == 0) {
 			defaultDisplay(canvas);
 			return;
 		}
 
-		// ÖØ»æÊ±ÖØÖÃÂ·¾¶
+		// ï¿½Ø»ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 		mPath.reset();
 		mPathFoldAndNext.reset();
 
-		// »æÖÆµ×É«
+		// ï¿½ï¿½ï¿½Æµï¿½É«
 		canvas.drawColor(Color.WHITE);
 
 		/*
-		 * Èç¹û×ø±êµãÔÚÔ­µã£¨¼´»¹Ã»·¢Éú´¥ÅöÊ±£©Ôò»æÖÆµÚÒ»Ò³
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ã£¨ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ò»Ò³
 		 */
 		if (mPointX == 0 && mPointY == 0) {
 			canvas.drawBitmap(mBitmaps.get(mBitmaps.size() - 1), 0, 0, null);
@@ -214,18 +214,18 @@ public class FoldView extends View {
 		}
 
 		/*
-		 * ÅÐ¶Ï´¥ÃþµãÊÇ·ñÔÚ¶Ì±ßµÄÓÐÐ§ÇøÓòÄÚ
+		 * ï¿½Ð¶Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¶Ì±ßµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		if (!mRegionShortSize.contains((int) mPointX, (int) mPointY)) {
-			// Èç¹û²»ÔÚÔòÍ¨¹ýx×ø±êÇ¿ÐÐÖØËãy×ø±ê
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½
 			mPointY = (float) (Math.sqrt((Math.pow(mViewWidth, 2) - Math.pow(mPointX, 2))) - mViewHeight);
 
-			// ¾«¶È¸½¼ÓÖµ±ÜÃâ¾«¶ÈËðÊ§
+			// ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½â¾«ï¿½ï¿½ï¿½ï¿½Ê§
 			mPointY = Math.abs(mPointY) + mValueAdded;
 		}
 
 		/*
-		 * »º³åÇøÓòÅÐ¶Ï
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 		 */
 		float area = mViewHeight - mBuffArea;
 		if (!isSlide && mPointY >= area) {
@@ -233,22 +233,22 @@ public class FoldView extends View {
 		}
 
 		/*
-		 * ¶î£¬Õâ¸ö¸ÃÔõÃ´×¢ÊÍºÃÄØ¡­¡­¸ù¾ÝÍ¼À´
+		 * ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´×¢ï¿½Íºï¿½ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 		 */
 		float mK = mViewWidth - mPointX;
 		float mL = mViewHeight - mPointY;
 
-		// ÐèÒªÖØ¸´Ê¹ÓÃµÄ²ÎÊý´æÖµ±ÜÃâÖØ¸´¼ÆËã
+		// ï¿½ï¿½Òªï¿½Ø¸ï¿½Ê¹ï¿½ÃµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½
 		float temp = (float) (Math.pow(mL, 2) + Math.pow(mK, 2));
 
 		/*
-		 * ¼ÆËã¶Ì±ß³¤±ß³¤¶È
+		 * ï¿½ï¿½ï¿½ï¿½Ì±ß³ï¿½ï¿½ß³ï¿½ï¿½ï¿½
 		 */
 		float sizeShort = temp / (2F * mK);
 		float sizeLong = temp / (2F * mL);
 
 		/*
-		 * ¸ù¾Ý³¤¶Ì±ß±ß³¤¼ÆËãÐý×ª½Ç¶È²¢È·¶¨mRatioµÄÖµ
+		 * ï¿½ï¿½ï¿½Ý³ï¿½ï¿½Ì±ß±ß³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¶È²ï¿½È·ï¿½ï¿½mRatioï¿½ï¿½Öµ
 		 */
 		if (sizeShort < sizeLong) {
 			mRatio = Ratio.SHORT;
@@ -260,29 +260,29 @@ public class FoldView extends View {
 			mDegrees = (float) (Math.acos(cos) / Math.PI * 180);
 		}
 
-		// ÒÆ¶¯Â·¾¶ÆðµãÖÁ´¥Ãþµã
+		// ï¿½Æ¶ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mPath.moveTo(mPointX, mPointY);
 		mPathFoldAndNext.moveTo(mPointX, mPointY);
 
 		if (sizeLong > mViewHeight) {
-			// ¼ÆËã¡­¡­¶î¡­¡­°´Í¼À´AN±ß~
+			// ï¿½ï¿½ï¿½ã¡­ï¿½ï¿½ï¿½î¡­ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ANï¿½ï¿½~
 			float an = sizeLong - mViewHeight;
 
-			// Èý½ÇÐÎAMNµÄMN±ß
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AMNï¿½ï¿½MNï¿½ï¿½
 			float largerTrianShortSize = an / (sizeLong - (mViewHeight - mPointY)) * (mViewWidth - mPointX);
 
-			// Èý½ÇÐÎAQNµÄQN±ß
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AQNï¿½ï¿½QNï¿½ï¿½
 			float smallTrianShortSize = an / sizeLong * sizeShort;
 
 			/*
-			 * ¼ÆËã²ÎÊý
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			 */
 			float topX1 = mViewWidth - largerTrianShortSize;
 			float topX2 = mViewWidth - smallTrianShortSize;
 			float btmX2 = mViewWidth - sizeShort;
 
 			/*
-			 * Éú³ÉËÄ±ßÐÎÂ·¾¶
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 			 */
 			mPath.lineTo(topX1, 0);
 			mPath.lineTo(topX2, 0);
@@ -290,7 +290,7 @@ public class FoldView extends View {
 			mPath.close();
 
 			/*
-			 * Éú³É°üº¬ÕÛµþºÍÏÂÒ»Ò³µÄÂ·¾¶
+			 * ï¿½ï¿½ï¿½É°ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½Â·ï¿½ï¿½
 			 */
 			mPathFoldAndNext.lineTo(topX1, 0);
 			mPathFoldAndNext.lineTo(mViewWidth, 0);
@@ -299,20 +299,20 @@ public class FoldView extends View {
 			mPathFoldAndNext.close();
 		} else {
 			/*
-			 * ¼ÆËã²ÎÊý
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			 */
 			float leftY = mViewHeight - sizeLong;
 			float btmX = mViewWidth - sizeShort;
 
 			/*
-			 * Éú³ÉÈý½ÇÐÎÂ·¾¶
+			 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 			 */
 			mPath.lineTo(mViewWidth, leftY);
 			mPath.lineTo(btmX, mViewHeight);
 			mPath.close();
 
 			/*
-			 * Éú³É°üº¬ÕÛµþºÍÏÂÒ»Ò³µÄÂ·¾¶
+			 * ï¿½ï¿½ï¿½É°ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½Â·ï¿½ï¿½
 			 */
 			mPathFoldAndNext.lineTo(mViewWidth, leftY);
 			mPathFoldAndNext.lineTo(mViewWidth, mViewHeight);
@@ -324,52 +324,52 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * »æÖÆÎ»Í¼Êý¾Ý
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param canvas
-	 *            »­²¼¶ÔÏó
+	 *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void drawBitmaps(Canvas canvas) {
-		// »æÖÆÎ»Í¼Ç°ÖØÖÃisLastPageÎªfalse
+		// ï¿½ï¿½ï¿½ï¿½Î»Í¼Ç°ï¿½ï¿½ï¿½ï¿½isLastPageÎªfalse
 		isLastPage = false;
 
-		// ÏÞÖÆpageIndexµÄÖµ·¶Î§
+		// ï¿½ï¿½ï¿½ï¿½pageIndexï¿½ï¿½Öµï¿½ï¿½Î§
 		mPageIndex = mPageIndex < 0 ? 0 : mPageIndex;
 		mPageIndex = mPageIndex > mBitmaps.size() ? mBitmaps.size() : mPageIndex;
 
-		// ¼ÆËãÊý¾ÝÆðÊ¼Î»ÖÃ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 		int start = mBitmaps.size() - 2 - mPageIndex;
 		int end = mBitmaps.size() - mPageIndex;
 
 		/*
-		 * Èç¹ûÊý¾ÝÆðµãÎ»ÖÃÐ¡ÓÚ0Ôò±íÊ¾µ±Ç°ÒÑ¾­µ½ÁË×îºóÒ»ÕÅÍ¼Æ¬
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ð¡ï¿½ï¿½0ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼Æ¬
 		 */
 		if (start < 0) {
-			// ´ËÊ±ÉèÖÃisLastPageÎªtrue
+			// ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½isLastPageÎªtrue
 			isLastPage = true;
 
-			// ²¢ÏÔÊ¾ÌáÊ¾ÐÅÏ¢
+			// ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
 			showToast("This is fucking lastest page");
 
-			// Ç¿ÖÆÖØÖÃÆðÊ¼Î»ÖÃ
+			// Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Î»ï¿½ï¿½
 			start = 0;
 			end = 1;
 		}
 
 		/*
-		 * ¶¨ÒåÇøÓò
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		Region regionFold = null;
 		Region regionNext = null;
 
 		/*
-		 * Í¨¹ýÂ·¾¶³É³ÉÇøÓò
+		 * Í¨ï¿½ï¿½Â·ï¿½ï¿½ï¿½É³ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		regionFold = computeRegion(mPath);
 		regionNext = computeRegion(mPathFoldAndNext);
 
 		/*
-		 * ¼ÆËãµ±Ç°Ò³µÄÇøÓò
+		 * ï¿½ï¿½ï¿½ãµ±Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		canvas.save();
 		//canvas.clipRegion(mRegionCurrent);
@@ -378,7 +378,7 @@ public class FoldView extends View {
 		canvas.restore();
 
 		/*
-		 * ¼ÆËãÕÛµþÒ³µÄÇøÓò
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		canvas.save();
 		//canvas.clipRegion(regionFold);
@@ -386,7 +386,7 @@ public class FoldView extends View {
 		canvas.translate(mPointX, mPointY);
 
 		/*
-		 * ¸ù¾Ý³¤¶Ì±ß±êÊ¶¼ÆËãÕÛµþÇøÓòÍ¼Ïñ
+		 * ï¿½ï¿½ï¿½Ý³ï¿½ï¿½Ì±ß±ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 		 */
 		if (mRatio == Ratio.SHORT) {
 			canvas.rotate(90 - mDegrees);
@@ -404,7 +404,7 @@ public class FoldView extends View {
 		canvas.restore();
 
 		/*
-		 * ¼ÆËãÏÂÒ»Ò³µÄÇøÓò
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		canvas.save();
 		//canvas.clipRegion(regionNext);
@@ -414,32 +414,32 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * Ä¬ÈÏÏÔÊ¾
+	 * Ä¬ï¿½ï¿½ï¿½ï¿½Ê¾
 	 * 
 	 * @param canvas
-	 *            Canvas¶ÔÏó
+	 *            Canvasï¿½ï¿½ï¿½ï¿½
 	 */
 	private void defaultDisplay(Canvas canvas) {
-		// »æÖÆµ×É«
+		// ï¿½ï¿½ï¿½Æµï¿½É«
 		canvas.drawColor(Color.WHITE);
 
-		// »æÖÆ±êÌâÎÄ±¾
+		// ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 		mTextPaint.setTextSize(mTextSizeLarger);
 		mTextPaint.setColor(Color.RED);
 		canvas.drawText("FBI WARNING", mViewWidth / 2, mViewHeight / 4, mTextPaint);
 
-		// »æÖÆÌáÊ¾ÎÄ±¾
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 		mTextPaint.setTextSize(mTextSizeNormal);
 		mTextPaint.setColor(Color.BLACK);
 		canvas.drawText("Please set data use setBitmaps method", mViewWidth / 2, mViewHeight / 3, mTextPaint);
 	}
 
 	/**
-	 * Í¨¹ýÂ·¾¶¼ÆËãÇøÓò
+	 * Í¨ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param path
-	 *            Â·¾¶¶ÔÏó
-	 * @return Â·¾¶µÄRegion
+	 *            Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * @return Â·ï¿½ï¿½ï¿½ï¿½Region
 	 */
 	private Region computeRegion(Path path) {
 		Region region = new Region();
@@ -450,20 +450,20 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * ¼ÆËã»¬¶¯²ÎÊý±ä»¯
+	 * ï¿½ï¿½ï¿½ã»¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä»¯
 	 */
 	private void slide() {
 		/*
-		 * Èç¹û»¬¶¯±êÊ¶ÖµÎªfalseÔò·µ»Ø
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ÖµÎªfalseï¿½ò·µ»ï¿½
 		 */
 		if (!isSlide) {
 			return;
 		}
 
 		/*
-		 * Èç¹ûµ±Ç°Ò³²»ÊÇ×îºóÒ»Ò³
-		 * Èç¹ûÊÇÐèÒª·­ÏÂÒ»Ò³
-		 * ²¢ÇÒÉÏÒ»Ò³ÒÑ±»×öµô
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»Ò³
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½Ñ±ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		if (!isLastPage && isNextPage && (mPointX - mAutoSlideV_BL <= -mViewWidth)) {
 			mPointX = -mViewWidth;
@@ -473,43 +473,43 @@ public class FoldView extends View {
 		}
 
 		/*
-		 * Èç¹ûµ±Ç°»¬¶¯±êÊ¶ÎªÏòÓÒÏÂ»¬¶¯x×ø±êºãÐ¡ÓÚ¿Ø¼þ¿í¶È
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶Îªï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ú¿Ø¼ï¿½ï¿½ï¿½ï¿½
 		 */
 		else if (mSlide == Slide.RIGHT_BOTTOM && mPointX < mViewWidth) {
-			// ÔòÈÃx×ø±ê×Ô¼Ó
+			// ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
 			mPointX += mAutoSlideV_BR;
 
-			// ²¢¸ù¾Ýx×ø±êµÄÖµÖØÐÂ¼ÆËãy×ø±êµÄÖµ
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 			mPointY = mStart_Y + ((mPointX - mStart_X) * (mViewHeight - mStart_Y)) / (mViewWidth - mStart_X);
 
-			// ÈÃSlideHandler´¦ÀíÖØ»æ
+			// ï¿½ï¿½SlideHandlerï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½
 			mSlideHandler.sleep(25);
 		}
 
 		/*
-		 * Èç¹ûµ±Ç°»¬¶¯±êÊ¶ÎªÏò×óÏÂ»¬¶¯x×ø±êºã´óÓÚ¿Ø¼þ¿í¶ÈµÄ¸ºÖµ
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶Îªï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿Ø¼ï¿½ï¿½ï¿½ÈµÄ¸ï¿½Öµ
 		 */
 		else if (mSlide == Slide.LEFT_BOTTOM && mPointX > -mViewWidth) {
-			// ÔòÈÃx×ø±ê×Ô¼õ
+			// ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½
 			mPointX -= mAutoSlideV_BL;
 
-			// ²¢¸ù¾Ýx×ø±êµÄÖµÖØÐÂ¼ÆËãy×ø±êµÄÖµ
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 			mPointY = mStart_Y + ((mPointX - mStart_X) * (mViewHeight - mStart_Y)) / (-mViewWidth - mStart_X);
 
-			// ÈÃSlideHandler´¦ÀíÖØ»æ
+			// ï¿½ï¿½SlideHandlerï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½
 			mSlideHandler.sleep(25);
 		}
 	}
 
 	/**
-	 * ÎªisSlideÌá¹©¶ÔÍâµÄÍ£Ö¹·½·¨±ãÓÚ±ØÒªÊ±ÊÍ·Å»¬¶¯¶¯»­
+	 * ÎªisSlideï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ÒªÊ±ï¿½Í·Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void slideStop() {
 		isSlide = false;
 	}
 
 	/**
-	 * Ìá¹©¶ÔÍâµÄ·½·¨»ñÈ¡ViewÄÚHandler
+	 * ï¿½á¹©ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½È¡Viewï¿½ï¿½Handler
 	 * 
 	 * @return mSlideHandler
 	 */
@@ -522,33 +522,33 @@ public class FoldView extends View {
 		isNextPage = true;
 
 		/*
-		 * »ñÈ¡µ±Ç°ÊÂ¼þµã
+		 * ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Â¼ï¿½ï¿½ï¿½
 		 */
 		float x = event.getX();
 		float y = event.getY();
 
 		switch (event.getAction() & MotionEvent.ACTION_MASK) {
-		case MotionEvent.ACTION_UP:// ÊÖÖ¸Ì§ÆðÊ±ºò
+		case MotionEvent.ACTION_UP:// ï¿½ï¿½Ö¸Ì§ï¿½ï¿½Ê±ï¿½ï¿½
 			if (isNextPage) {
 				/*
-				 * Èç¹ûµ±Ç°ÊÂ¼þµãÎ»ÓÚÓÒÏÂ×Ô»¬ÇøÓò
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Â¼ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
 				 */
 				if (x > mAutoAreaRight && y > mAutoAreaButtom) {
-					// µ±Ç°ÎªÍùÓÒÏÂ»¬
+					// ï¿½ï¿½Ç°Îªï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½
 					mSlide = Slide.RIGHT_BOTTOM;
 
-					// Ä¦²Á°ÉÉ§Äê£¡
+					// Ä¦ï¿½ï¿½ï¿½ï¿½É§ï¿½ê£¡
 					justSlide(x, y);
 				}
 
 				/*
-				 * Èç¹ûµ±Ç°ÊÂ¼þµãÎ»ÓÚ×ó²à×Ô»¬ÇøÓò
+				 * ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Â¼ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½ï¿½ï¿½
 				 */
 				if (x < mAutoAreaLeft) {
-					// µ±Ç°ÎªÍù×óÏÂ»¬
+					// ï¿½ï¿½Ç°Îªï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½
 					mSlide = Slide.LEFT_BOTTOM;
 
-					// Ä¦²Á°ÉÉ§Äê£¡
+					// Ä¦ï¿½ï¿½ï¿½ï¿½É§ï¿½ê£¡
 					justSlide(x, y);
 				}
 			}
@@ -556,10 +556,10 @@ public class FoldView extends View {
 		case MotionEvent.ACTION_DOWN:
 			isSlide = false;
 			/*
-			 * Èç¹ûÊÂ¼þµãÎ»ÓÚ»Ø¹öÇøÓò
+			 * ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Î»ï¿½Ú»Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½
 			 */
 			if (x < mAutoAreaLeft) {
-				// ÄÇ¾Í²»·­ÏÂÒ»Ò³ÁË¶øÊÇÉÏÒ»Ò³
+				// ï¿½Ç¾Í²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½Ë¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 				isNextPage = false;
 				mPageIndex--;
 				mPointX = x;
@@ -576,10 +576,10 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * ´¦ÀíDOWNºÍMOVEÊÂ¼þ
+	 * ï¿½ï¿½ï¿½ï¿½DOWNï¿½ï¿½MOVEï¿½Â¼ï¿½
 	 * 
 	 * @param event
-	 *            ÊÂ¼þ¶ÔÏó
+	 *            ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void downAndMove(MotionEvent event) {
 		if (!isLastPage) {
@@ -591,40 +591,40 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * ÔÚÕâ¹â»¬µÄµØ°åÉÏ~
+	 * ï¿½ï¿½ï¿½ï¿½â»¬ï¿½ÄµØ°ï¿½ï¿½ï¿½~
 	 * 
 	 * @param x
-	 *            µ±Ç°´¥Ãþµãx
+	 *            ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
 	 * @param y
-	 *            µ±Ç°´¥Ãþµãy
+	 *            ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½y
 	 */
 	private void justSlide(float x, float y) {
-		// »ñÈ¡²¢ÉèÖÃÖ±Ïß·½³ÌµÄÆðµã
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ß·ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½
 		mStart_X = x;
 		mStart_Y = y;
 
-		// OKÒª¿ªÊ¼»¬¶¯ÁËÅ¶~
+		// OKÒªï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¶~
 		isSlide = true;
 
-		// »¬¶¯
+		// ï¿½ï¿½ï¿½ï¿½
 		slide();
 	}
 
 	/**
-	 * ÉèÖÃÎ»Í¼Êý¾Ý
+	 * ï¿½ï¿½ï¿½ï¿½Î»Í¼ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param bitmaps
-	 *            Î»Í¼Êý¾ÝÁÐ±í
+	 *            Î»Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	public synchronized void setBitmaps(List<Bitmap> bitmaps) {
 		/*
-		 * Èç¹ûÊý¾ÝÎª¿ÕÔòÅ×³öÒì³£
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£
 		 */
 		if (null == bitmaps || bitmaps.size() == 0)
 			throw new IllegalArgumentException("no bitmap to display");
 
 		/*
-		 * Èç¹ûÊý¾Ý³¤¶ÈÐ¡ÓÚ2ÔòGGË¼ÃÜ´ï
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½2ï¿½ï¿½GGË¼ï¿½Ü´ï¿½
 		 */
 		if (bitmaps.size() < 2)
 			throw new IllegalArgumentException("fuck you and fuck to use imageview");
@@ -634,34 +634,34 @@ public class FoldView extends View {
 	}
 
 	/**
-	 * ToastÏÔÊ¾
+	 * Toastï¿½ï¿½Ê¾
 	 * 
 	 * @param msg
-	 *            ToastÏÔÊ¾ÎÄ±¾
+	 *            Toastï¿½ï¿½Ê¾ï¿½Ä±ï¿½
 	 */
 	private void showToast(Object msg) {
 		Toast.makeText(mContext, msg.toString(), Toast.LENGTH_SHORT).show();
 	}
 
 	/**
-	 * ´¦Àí»¬¶¯µÄHandler
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Handler
 	 */
 	@SuppressLint("HandlerLeak")
 	public class SlideHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
-			// Ñ­»·µ÷ÓÃ»¬¶¯¼ÆËã
+			// Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			FoldView.this.slide();
 
-			// ÖØ»æÊÓÍ¼
+			// ï¿½Ø»ï¿½ï¿½ï¿½Í¼
 			FoldView.this.invalidate();
 		}
 
 		/**
-		 * ÑÓ³ÙÏòHandler·¢ËÍÏûÏ¢ÊµÏÖÊ±¼ä¼ä¸ô
+		 * ï¿½Ó³ï¿½ï¿½ï¿½Handlerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Êµï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 		 * 
 		 * @param delayMillis
-		 *            ¼ä¸ôÊ±¼ä
+		 *            ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 		 */
 		public void sleep(long delayMillis) {
 			this.removeMessages(0);

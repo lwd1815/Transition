@@ -56,7 +56,7 @@ public class CustomViewFragment extends BaseFragment {
 
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    mView = View.inflate(getContext(), R.layout.fragment_customview, null);
+    mView = View.inflate(container.getContext(), R.layout.fragment_customview, null);
 
     backMyOrders = (ImageView) mView.findViewById(R.id.back_myOrders);
     toolbarMyOrders = mView.findViewById(R.id.toolbar_myOrders);

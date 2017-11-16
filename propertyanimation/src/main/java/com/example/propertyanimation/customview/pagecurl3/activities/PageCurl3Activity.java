@@ -11,20 +11,10 @@ import com.example.propertyanimation.customview.pagecurl3.views.PageTurnView;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-/**
- * 应用主界面
- * 
- * @author AigeStudio
- * @since 2014/12/15
- * @version 1.0.0
- * 
- */
 public class PageCurl3Activity extends Activity {
-	private PageTurnView mPageCurlView;// 翻页控件
-	private FoldView mFoldView;// 折页控件
-	private CurveView mCurveView;// 曲线控件
+	private PageTurnView mPageCurlView;
+	private FoldView mFoldView;
+	private CurveView mCurveView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
