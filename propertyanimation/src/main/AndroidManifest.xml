@@ -117,7 +117,8 @@
 		<activity android:name=".recycleview.ListViewActivity" />
 		<activity android:name=".recycleview.GridViewActivity" />
 		<activity android:name=".expendlistview.ExpandListViewActivity" />
-		<activity android:name=".refresh.RefreshActivity"></activity>
+		<activity android:name=".refresh.RefreshActivity" />
+		<activity android:name=".progress.AnditProgressViewActivity"></activity>
 	</application>
 
 </manifest>

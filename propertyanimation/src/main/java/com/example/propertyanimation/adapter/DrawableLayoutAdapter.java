@@ -11,12 +11,12 @@ import com.example.propertyanimation.R;
 import com.example.propertyanimation.chat.qq.QQSplashActivity;
 import com.example.propertyanimation.customview.CustomViewActivity;
 import com.example.propertyanimation.customview.pageCurl4.activities.PageCurl4Activity;
-import com.example.propertyanimation.customview.pagecurl.activities.PageCurlActivity;
 import com.example.propertyanimation.customview.pagecurl2.activities.PageCurl2Activity;
 import com.example.propertyanimation.customview.pagecurl3.activities.PageCurl3Activity;
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
 import com.example.propertyanimation.expendlistview.ExpandListViewActivity;
+import com.example.propertyanimation.progress.AnditProgressViewActivity;
 import com.example.propertyanimation.recycleview.RecyclerActivity;
 import com.example.propertyanimation.refresh.RefreshActivity;
 import com.example.propertyanimation.testcollapsingtoolbarlayout.TestMyRectActivity;
@@ -58,7 +58,7 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Intent intent = new Intent(holder.itemView.getContext(), CustomViewActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }else if (position==5){
-            Intent intent = new Intent(holder.itemView.getContext(), PageCurlActivity.class);
+            Intent intent = new Intent(holder.itemView.getContext(), AnditProgressViewActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }else if (position==6){
             Intent intent = new Intent(holder.itemView.getContext(), PageCurl2Activity.class);
