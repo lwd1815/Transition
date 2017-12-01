@@ -1,5 +1,7 @@
 package com.example.propertyanimation.mvp.model;
 
+import com.example.propertyanimation.mvp.presenter.onSearchListener;
+
 /**
  * 创建者     李文东
  * 创建时间   2017/11/30 18:52
@@ -10,4 +12,5 @@ package com.example.propertyanimation.mvp.model;
  */
 
 public interface ISearchModel {
+  void getIpaddressInfos(String ipAddress,onSearchListener onSearchListener);
 }

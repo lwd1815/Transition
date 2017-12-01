@@ -10,4 +10,5 @@ package com.example.propertyanimation.mvp.presenter;
  */
 
 public interface ISearchPresenter {
+  void Search();
 }

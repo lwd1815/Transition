@@ -9,7 +9,7 @@ public class LambdaActivity extends AppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_lambda);
-    new Thread(()->System.out.println("   ")).start();
+    //new Thread(()->System.out.println("   ")).start();
   }
 
 }

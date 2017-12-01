@@ -16,6 +16,7 @@ import com.example.propertyanimation.customview.pagecurl3.activities.PageCurl3Ac
 import com.example.propertyanimation.expand.ExpandMainActivity;
 import com.example.propertyanimation.expand.Main2Activity;
 import com.example.propertyanimation.expendlistview.ExpandListViewActivity;
+import com.example.propertyanimation.mvp.view.SearchActivity;
 import com.example.propertyanimation.progress.AnditProgressViewActivity;
 import com.example.propertyanimation.recycleview.RecyclerActivity;
 import com.example.propertyanimation.refresh.RefreshActivity;
@@ -83,6 +84,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==13){
             Intent intent = new Intent(holder.itemView.getContext(),  RefreshActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==14){
+            Intent intent = new Intent(holder.itemView.getContext(),  SearchActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }

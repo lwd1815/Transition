@@ -1,5 +1,7 @@
 package com.example.propertyanimation.mvp.presenter;
 
+import com.example.propertyanimation.mvp.bean.MyIp;
+
 /**
  * 创建者     李文东
  * 创建时间   2017/11/30 18:56
@@ -9,6 +11,7 @@ package com.example.propertyanimation.mvp.presenter;
  * 更新描述
  */
 
-public interface onSearchListener
-{
+public interface onSearchListener {
+  void onSuccess(MyIp myIp);
+  void onError();
 }

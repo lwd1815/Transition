@@ -7,7 +7,31 @@
 		android:layout_height="match_parent"
 		tools:context="com.example.propertyanimation.mvp.view.SearchActivity">
 <EditText
-		android:id="@+id/et"
+		android:layout_marginTop="10dp"
+		android:id="@+id/et_ip"
+		android:layout_centerHorizontal="true"
 		android:layout_width="200dp"
 		android:layout_height="50dp" />
+	<Button
+			android:id="@+id/btn_search"
+			android:text="查询"
+			android:layout_marginTop="10dp"
+			android:layout_below="@+id/et_ip"
+			android:layout_centerHorizontal="true"
+			android:layout_width="100dp"
+			android:layout_height="50dp" />
+	<TextView
+			android:layout_centerHorizontal="true"
+			android:layout_below="@+id/btn_search"
+			android:id="@+id/tv_msg"
+			android:gravity="center"
+			android:layout_marginTop="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="50dp" />
+	<ProgressBar
+			android:visibility="gone"
+			android:layout_centerInParent="true"
+			android:id="@+id/pb_load"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 </RelativeLayout>
