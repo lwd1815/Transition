@@ -90,7 +90,7 @@ public class FourView extends View{
     Region ren = new Region();
     ren.setPath(ovalPath,new Region(50,50,200,200));
     //画出路径
-    drawRegions(canvas,ren,seconPaint);
+    //drawRegions(canvas,ren,seconPaint);
 
     /**
      * 矩形集枚举区域-RegionIterator类
@@ -112,9 +112,30 @@ public class FourView extends View{
        public boolean op(int left, int top, int right, int bottom, Op op)
        public boolean op(Region region, Op op)
        public boolean op(Rect rect, Region region, Op op)
-
-
      */
+
+
+    Rect rect1=new Rect(100,100,400,200);
+    Rect rect2=new Rect(200,0,300,300);
+    //构造一个画笔,画出矩形轮廓
+    Paint paint = new Paint();
+    paint.setColor(Color.RED);
+    paint.setStyle(Paint.Style.STROKE);
+    paint.setStrokeWidth(2);
+    canvas.drawRect(rect1,paint);
+    canvas.drawRect(rect2,paint);
+
+    //构造两个Region
+    Region region1=new Region(rect1);
+    Region region2=new Region(rect2);
+    //取两个区域的交集
+    region1.op(region2, Region.Op.REPLACE);
+
+    //在构造一个画笔,填充region操作结果
+    Paint paint_fill=new Paint();
+    paint_fill.setColor(Color.GREEN);
+    paint_fill.setStyle(Paint.Style.FILL);
+    drawRegion(canvas,region,paint_fill);
   }
 
   private void drawRegions(Canvas canvas, Region ren, Paint seconPaint) {
@@ -131,6 +152,24 @@ public class FourView extends View{
     while (iter.next(r)){
       canvas.drawRect(r,firstPaint);
     }
+  }
+  /**
+   * 无论是矩形还是区域,都会涉及到与另一个区域的一些操作,比如取交集,取并集等,涉及到的函数有:
+   * public final boolean union(rect r)指定合并
+   * public boolean op(Rect r,Op p)
+   * public boolean op(Region region,Op op)
+   * public boolean op(Rect rect,Region region ,Op op)
+   * public boolean op(int left,int top,int right,int bottom,Op op)
+   * 除了union(Rect rect)是指定合并操作以外,其他四个op()构造函数,都是指定与另一个区域的操作,其中最重要的指定Op的参数,
+   */
+
+  public enum Op{
+    DIFFERENCE(),//最终区域为region1与region2不同的区域
+    INIERSECT(),//最终区域为region1与region2相交的区域
+    UNION(),//最终区域为region1与region2组合在一起的区域
+    XOR(),//最终区域为region1与region2相交之外的区域
+    REVERSE_DIFFERENCE(),//最终区域为greion1与region2不同的区域
+    REPLACE();//最终区域为region2的区域
   }
 
 
