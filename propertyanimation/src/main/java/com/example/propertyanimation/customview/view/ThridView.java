@@ -65,6 +65,13 @@ public class ThridView extends View {
     linepath.close();
     canvas.drawPath(linepath,linePaint);
 
+    linePaint.setColor(Color.YELLOW);
+    Path path=new Path();
+    path.moveTo(20,20);
+    path.lineTo(30,30);
+    path.lineTo(59,8);
+    path.close();
+    canvas.drawPath(path,linePaint);
     /**
      * 2 矩形路径
      *
@@ -126,6 +133,17 @@ public class ThridView extends View {
 
     canvas.drawPath(roundPath,linePaint);
 
+
+    //画圆角矩形
+    Paint paint = new Paint();
+    paint.setColor(Color.YELLOW);
+    paint.setStrokeWidth(5);
+    paint.setAntiAlias(true);
+    paint.setStyle(Paint.Style.FILL);
+    Path path1=new Path();
+    RectF rectF4 = new RectF(50,50,60,60);
+    path1.addRoundRect(rectF4,10,10, Path.Direction.CCW);
+    canvas.drawPath(path1,paint);
     /**
      * 4 圆形路径
      * addCircle(float x,float y,float radius,Path.Direction dir)
@@ -147,8 +165,8 @@ public class ThridView extends View {
 
     linePaint.setColor(Color.GREEN);
     Path ovalPath = new Path();
-    RectF rectF4 = new RectF(50,300,200,500);
-    ovalPath.addOval(rectF4, Path.Direction.CCW);
+    RectF rectF5 = new RectF(50,300,200,500);
+    ovalPath.addOval(rectF5, Path.Direction.CCW);
     canvas.drawPath(ovalPath,linePaint);
 
     /**
@@ -162,8 +180,8 @@ public class ThridView extends View {
 
     linePaint.setColor(Color.GRAY);
     Path arcPath = new Path();
-    RectF rectF5 = new RectF(500,200,600,300);
-    arcPath.addArc(rectF5,0,120);
+    RectF rectF9 = new RectF(500,200,600,300);
+    arcPath.addArc(rectF9,0,120);
     canvas.drawPath(arcPath,linePaint);
 
     /**
@@ -185,6 +203,7 @@ public class ThridView extends View {
     textpaint.setStrokeWidth(3);
     textpaint.setAntiAlias(true);
     textpaint.setStyle(Paint.Style.FILL);
+    textpaint.setTextAlign(Paint.Align.CENTER);
     //样式设置
     //设置字体是否为粗体
     textpaint.setFakeBoldText(true);
