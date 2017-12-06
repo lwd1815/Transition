@@ -36,9 +36,9 @@ public class FourFragment extends BaseFragment {
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View view = View.inflate(getContext(), R.layout.fragment_child_four,null);
+    View view = View.inflate(container.getContext(), R.layout.fragment_child_four,null);
     FrameLayout frameLayout = view.findViewById(R.id.four_child);
-    FourView fourView= new FourView(getContext());
+    FourView fourView= new FourView(container.getContext());
     frameLayout.addView(fourView);
     return view;
   }
