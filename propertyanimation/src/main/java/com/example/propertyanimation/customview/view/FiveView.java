@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -78,8 +79,72 @@ public class FiveView extends View {
      */
 
     /**
-     * 旋转Rotate  li5783553777
+     * 旋转Rotate
+     * H画布的旋转是默认是围绕坐标原点旋转的,其实旋转的是画布canvas,以后在画布上画出来的东西显示出来的时候看起来都是旋转的,
+     * VOID Rotate(float degrees)
+     * void ratate(float degress ,float px,float py)
+     * px,py旋转的中心坐标
      */
+
+    Rect roat = new Rect(300,10,500,100);
+    canvas.drawRect(roat,paint_green);
+    canvas.rotate(30);
+    canvas.drawRect(roat,paint_red);
+
+    /**
+     * 缩放scale
+     * public void scale(float sx,float sy)
+     * public final void scale(float sx,float sy,float px,float py)
+     * sx 水平反向伸缩的比例,假设原坐标轴的比例为n,不变时为1,在变更的x轴密度为n*sx,所以,sx为小数为缩小,sx为整数位放大
+     * float sy:垂直方向
+     * 注意:这里x,y轴的密度改变,显示在图形上就会正好相同,比如x轴缩小,那么显示的图形也会缩小
+     */
+
+    Rect rect2=new Rect(10,10,200,100);
+    canvas.drawRect(rect2,paint_green);
+    canvas.scale(0.5f,1);
+    canvas.drawRect(rect2,paint_red);
+
+    /**]
+     *扭曲skew
+     *void skew(float sx,float sy)
+     * sx 将画布在x方向上倾斜相应的角度,sx倾斜角度tan值
+     * sy 将画布在y轴方向上倾斜相应的角度,sy为倾斜角度的tan值
+     */
+
+    Rect rect3=new Rect(200,200,400,400);
+    canvas.drawRect(rect3,paint_green);
+    canvas.skew(1.732f,0);
+    canvas.drawRect(rect3,paint_red);
+
+    /**
+     * 裁剪画布
+     * 裁剪画布时利用clip系列函数,通过与rect,path,region取交,并,差等集合运算来获得最新的画布形状,除了调用save,restore函数以外,
+     * 这个操作时不可逆的,一旦canvas画布被裁剪,就不能在回复
+     */
+    canvas.drawColor(Color.RED);
+    canvas.clipRect(new RectF(300,300,400,400));
+    canvas.drawColor(Color.GREEN);
+
+    /**
+     * 画布的保存与恢复
+     * int save()
+     * void restore()
+     * save():每次调用save()函数,都会吧当前的画布的状态进行保存,然后存放到特定的栈中
+     * restroe()每当调用restore()函数,就会把栈中最顶层的画布状态取出来,并按照这个状态恢复当前的画布,并在这个画布上作画
+     */
+
+    canvas.drawColor(Color.BLUE);
+    canvas.save();
+    canvas.clipRect(new RectF(300,400,500,600));
+    canvas.drawColor(Color.GREEN);
+    canvas.restore();
+    /**
+     * 注意,保存几次就能restore几次,最多可以恢复到第一次保存的状态
+     */
+    //canvas.restore();
+    //canvas.restore();
+
 
   }
   private Paint generatePaint(int color,Paint.Style style,int width)
