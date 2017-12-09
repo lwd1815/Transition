@@ -39,6 +39,7 @@ public class SevenFragment extends BaseFragment {
     View view = View.inflate(container.getContext(), R.layout.fragment_child_seven,null);
     FrameLayout frameLayout = view.findViewById(R.id.seven_child);
     SevenView view1=new SevenView(container.getContext());
+    view1.startAnim();
     frameLayout.addView(view1);
     return view;
   }
