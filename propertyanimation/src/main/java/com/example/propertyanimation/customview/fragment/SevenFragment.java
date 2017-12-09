@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import com.example.propertyanimation.R;
 import com.example.propertyanimation.base.BaseFragment;
+import com.example.propertyanimation.customview.view.SevenView;
 
 /**
  * 创建者     李文东
@@ -34,7 +36,10 @@ public class SevenFragment extends BaseFragment {
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View view = View.inflate(getContext(), R.layout.fragment_child_seven,null);
+    View view = View.inflate(container.getContext(), R.layout.fragment_child_seven,null);
+    FrameLayout frameLayout = view.findViewById(R.id.seven_child);
+    SevenView view1=new SevenView(container.getContext());
+    frameLayout.addView(view1);
     return view;
   }
 
