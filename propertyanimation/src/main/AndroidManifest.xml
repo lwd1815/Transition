@@ -121,7 +121,8 @@
 		<activity android:name=".progress.AnditProgressViewActivity" />
 		<activity android:name=".lambda.LambdaActivity" />
 		<activity android:name=".mvp.view.SearchActivity" />
-		<activity android:name=".opengl.OpenGLActivity"></activity>
+		<activity android:name=".opengl.OpenGLActivity" />
+		<activity android:name=".surfaceview.SurfaceActivity"></activity>
 	</application>
 
 </manifest>

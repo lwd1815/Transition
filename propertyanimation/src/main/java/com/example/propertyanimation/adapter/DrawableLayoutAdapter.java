@@ -20,6 +20,7 @@ import com.example.propertyanimation.mvp.view.SearchActivity;
 import com.example.propertyanimation.progress.AnditProgressViewActivity;
 import com.example.propertyanimation.recycleview.RecyclerActivity;
 import com.example.propertyanimation.refresh.RefreshActivity;
+import com.example.propertyanimation.surfaceview.SurfaceActivity;
 import com.example.propertyanimation.testcollapsingtoolbarlayout.TestMyRectActivity;
 
 /**
@@ -87,6 +88,9 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             holder.itemView.getContext().startActivity(intent);
           }else if (position==14){
             Intent intent = new Intent(holder.itemView.getContext(),  SearchActivity.class);
+            holder.itemView.getContext().startActivity(intent);
+          }else if (position==15){
+            Intent intent = new Intent(holder.itemView.getContext(),  SurfaceActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }
