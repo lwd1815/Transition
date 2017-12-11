@@ -50,10 +50,10 @@ android {
     main.jniLibs.srcDirs = ['libs']
   }
   productFlavors {}
-//  compileOptions {
-//    targetCompatibility 1.8
-//    sourceCompatibility 1.8
-//  }
+  //  compileOptions {
+  //    targetCompatibility 1.8
+  //    sourceCompatibility 1.8
+  //  }
 }
 
 buildscript {

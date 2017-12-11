@@ -120,7 +120,8 @@
 		<activity android:name=".refresh.RefreshActivity" />
 		<activity android:name=".progress.AnditProgressViewActivity" />
 		<activity android:name=".lambda.LambdaActivity" />
-		<activity android:name=".mvp.view.SearchActivity"></activity>
+		<activity android:name=".mvp.view.SearchActivity" />
+		<activity android:name=".opengl.OpenGLActivity"></activity>
 	</application>
 
 </manifest>
