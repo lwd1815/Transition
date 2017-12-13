@@ -34,7 +34,7 @@ public class NineFragment extends BaseFragment {
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-    View view = View.inflate(getContext(), R.layout.fragment_child_nine,null);
+    View view = View.inflate(container.getContext(), R.layout.fragment_child_nine,null);
     return view;
   }
 

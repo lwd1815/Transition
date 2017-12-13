@@ -9,10 +9,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.view.WindowManager;
 import cn.bmob.v3.Bmob;
 import com.example.propertyanimation.chat.qq.QQChatActivity;
 import com.example.propertyanimation.chat.qq.QQLoginActivity;
@@ -52,6 +54,10 @@ public class BaseApplication extends Application implements EMMessageListener,
   private SoundPool soundPool;
   private int duanId;
   private int yuluId;
+
+  private static int windowWidth;
+  private static int windowHeight;
+
   private List<Activity> activities = new ArrayList<>();
   public void addActivity(Activity activity){
     activities.add(activity);
@@ -225,5 +231,21 @@ public class BaseApplication extends Application implements EMMessageListener,
 
   public void removeActivity(Activity activity) {
     activities.remove(activity);
+  }
+
+  private void initXY(Context context) {
+    Point size = new Point();
+    WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    manager.getDefaultDisplay().getSize(size);
+    windowWidth = size.x;
+    windowHeight = size.y;
+  }
+
+  public static int getWindowWidth() {
+    return windowWidth;
+  }
+
+  public static int getWindowHeight() {
+    return windowHeight;
   }
 }

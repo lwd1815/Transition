@@ -122,7 +122,8 @@
 		<activity android:name=".lambda.LambdaActivity" />
 		<activity android:name=".mvp.view.SearchActivity" />
 		<activity android:name=".opengl.OpenGLActivity" />
-		<activity android:name=".surfaceview.SurfaceActivity"></activity>
+		<activity android:name=".surfaceview.SurfaceActivity" />
+		<activity android:name=".camera.SmartCameraActivity"></activity>
 	</application>
 
 </manifest>
