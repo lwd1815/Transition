@@ -11,11 +11,12 @@ import android.graphics.Bitmap;
  * 更新描述
  */
 
-class CombatAircraft {
+class CombatAircraft extends Sprite{
 
   public CombatAircraft(Bitmap bitmap) {
   }
 
   public void destory() {
   }
+
 }

@@ -131,12 +131,70 @@ public class GameView extends View {
   }
 
   @Override public boolean onTouchEvent(MotionEvent event) {
-    return false;
+    int touchType=resolveTouchType(event);
+    if (status==STATUS_GAME_STARTED){
+      //如果是刚开始状态.且是移动状态
+      if (touchType==TOUCH_MOVE){
+        //让战斗机显示到居中正下方的位置  touchX touchY 触点的x坐标和y坐标
+        if (combatAircraft!=null){
+          combatAircraft.centerTo(touchX,touchY);
+        }
+      }
+    }
   }
 
+  /**
+   * 根据按下和抬起的时间差,合成一个想要的事件类型
+   */
+
+  private int resolveTouchType(MotionEvent event){
+    int touchType=-1;
+    int action=event.getAction();
+    touchX=event.getX();
+    touchY=event.getY();
+    if (action==MotionEvent.ACTION_MOVE){
+      //获取手指与屏幕的接触时间
+      long deltaTime=System.currentTimeMillis()-touchDownTime;
+      if (deltaTime>singleClickDurationTime){
+        touchType=TOUCH_MOVE;
+      }
+    }else if (action==MotionEvent.ACTION_DOWN){
+      touchDownTime=System.currentTimeMillis();
+    }else if (action==MotionEvent.ACTION_UP){
+      //触点弹起时间,获取手指抬起时间
+      touchUpTime=System.currentTimeMillis();
+      //计算按下到抬起的持续时间
+      long downUpDurationTime=touchUpTime-touchDownTime;
+      if (downUpDurationTime<singleClickDurationTime){
+        //计算这次单击距离上次单击的时间差
+       long twoClickDurationTime= touchUpTime-lastSingleClickTime;
+        if (twoClickDurationTime<doubleClickDurationTime){
+          //由于时间差小于定义的双击的时间间隔,所以可以认为是双击
+          touchType=TOUCH_DOUBLE_CLICK;
+          //重置变量
+          lastSingleClickTime=-1;
+          touchDownTime=-1;
+          touchUpTime=-1;
+        }else {
+          //如果是单击事件
+          lastSingleClickTime=touchUpTime;
+        }
+      }
+    }
+    return touchType;
+  }
+  public void restart(){
+    destroNotRecycleBitmaps();
+    startWhenBitmapReady();
+  }
   public void pause() {
+    status=STATUS_GAME_PAUSED;
   }
 
+  public void resume(){
+    status=STATUS_GAME_STARTED;
+    postInvalidate();
+  }
   public void destory() {
     destroNotRecycleBitmaps();
 
