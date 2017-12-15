@@ -123,7 +123,9 @@
 		<activity android:name=".mvp.view.SearchActivity" />
 		<activity android:name=".opengl.OpenGLActivity" />
 		<activity android:name=".surfaceview.SurfaceActivity" />
-		<activity android:name=".camera.SmartCameraActivity"></activity>
+		<activity android:name=".camera.SmartCameraActivity" />
+		<activity android:name=".airplaneview.AirPlaneActivity" />
+		<activity android:name=".airplaneview.GameActivity"></activity>
 	</application>
 
 </manifest>
