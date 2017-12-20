@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 /**
  * 创建者     李文东
  * 创建时间   2017/12/15 12:34
- * 描述
+ * 描述       TODO一款关于飞机大战的游戏,待完成
  * 更新者     $Author$
  * 更新时间   $Date$
  * 更新描述
