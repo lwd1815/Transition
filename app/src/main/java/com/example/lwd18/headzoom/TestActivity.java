@@ -33,7 +33,7 @@ public class TestActivity extends AppCompatActivity {
           }
 
           @Override public void onResponse(Call call, Response response) throws IOException {
-            System.out.println("res="+response);
+            System.out.println("res="+response.body().string());
           }
         });
       }
