@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.util.Log;
-import com.deepbaytech.tao.MyApplication;
+import com.example.propertyanimation.BaseApplication;
 
 /**
  * 程序配置数据，保存在sp中，清除缓存时不清除
@@ -53,11 +53,11 @@ public class SPConfigUtil {
 
 	synchronized public static String load(final String key) {
 		String cf = null;
-		if (MyApplication.getContext() == null) {
+		if (BaseApplication.getContext() == null) {
 			return cf;
 		}
 		try {
-			SharedPreferences sp = MyApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+			SharedPreferences sp = BaseApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
 			cf = sp.getString(key, null);
 		} catch (Exception e) {
 			// Log.e(TAG, e);
@@ -66,11 +66,11 @@ public class SPConfigUtil {
 	}
 
 	synchronized public static void save(final String key, final String val) {
-		if (MyApplication.getContext() == null || val == null) {
+		if (BaseApplication.getContext() == null || val == null) {
 			return;
 		}
 		try {
-			SharedPreferences sp = MyApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+			SharedPreferences sp = BaseApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
 			Editor edit = sp.edit();
 			edit.putString(key, val);
 			edit.commit();
@@ -82,7 +82,7 @@ public class SPConfigUtil {
 
 	synchronized public static void clear(final String key) {
 		try {
-			SharedPreferences sp = MyApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+			SharedPreferences sp = BaseApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
 			Editor edit = sp.edit();
 			edit.remove(key);
 			edit.commit();
@@ -93,7 +93,7 @@ public class SPConfigUtil {
 	
 	synchronized public static void clearAll() {
 		try {
-			SharedPreferences sp = MyApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+			SharedPreferences sp = BaseApplication.getContext().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
 			Editor edit = sp.edit();
 			edit.clear();
 			edit.commit();
