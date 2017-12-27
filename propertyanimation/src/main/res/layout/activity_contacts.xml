@@ -29,4 +29,30 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
 	</LinearLayout>
+
+	<com.example.propertyanimation.listview.CustomButton
+			android:id="@+id/alphabetButton"
+			android:layout_width="20dp"
+			android:layout_height="fill_parent"
+			android:layout_alignParentRight="true"
+			android:background="@drawable/a_z"
+			/>
+
+	<RelativeLayout
+			android:id="@+id/section_toast_layout"
+			android:layout_width="70dip"
+			android:layout_height="70dip"
+			android:layout_centerInParent="true"
+			android:background="@drawable/a_z"
+			android:visibility="gone"
+			>
+		<TextView
+				android:id="@+id/section_toast_text"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:textColor="#fff"
+				android:textSize="30sp"
+				/>
+	</RelativeLayout>
 </RelativeLayout>
