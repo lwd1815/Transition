@@ -21,7 +21,7 @@ import com.example.propertyanimation.mvp.view.SearchActivity;
 import com.example.propertyanimation.progress.AnditProgressViewActivity;
 import com.example.propertyanimation.recycleview.RecyclerActivity;
 import com.example.propertyanimation.refresh.RefreshActivity;
-import com.example.propertyanimation.sql.MyDatabaseActivity;
+import com.example.propertyanimation.service.MyServiceActivity;
 import com.example.propertyanimation.surfaceview.SurfaceActivity;
 import com.example.propertyanimation.testcollapsingtoolbarlayout.TestMyRectActivity;
 
@@ -98,7 +98,7 @@ public class DrawableLayoutAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Intent intent = new Intent(holder.itemView.getContext(),  ContactsActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }else if (position==17){
-            Intent intent = new Intent(holder.itemView.getContext(),  MyDatabaseActivity.class);
+            Intent intent = new Intent(holder.itemView.getContext(),  MyServiceActivity.class);
             holder.itemView.getContext().startActivity(intent);
           }
         }
