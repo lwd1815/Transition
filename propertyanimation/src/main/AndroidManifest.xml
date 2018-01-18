@@ -44,7 +44,7 @@
 				android:name="com.hyphenate.chat.EMJobService"
 				android:exported="true"
 				android:permission="android.permission.BIND_JOB_SERVICE" />
-		<service android:name="com.example.propertyanimation.service.MyService"/>
+		<service android:name=".service.MyService" />
 		<!-- 声明sdk所需的receiver -->
 		<receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
 			<intent-filter>
@@ -132,7 +132,8 @@
 		<activity android:name=".airplaneview.GameActivity" />
 		<activity android:name=".listview.ContactsActivity" />
 		<activity android:name=".sql.MyDatabaseActivity" />
-		<activity android:name=".service.MyServiceActivity"></activity>
+		<activity android:name=".service.MyServiceActivity" />
+		<activity android:name=".lrucache.BitmapLruCacheActivity"></activity>
 	</application>
 
 </manifest>
