@@ -8,7 +8,7 @@ import android.util.LruCache;
  * 创建时间   2018/1/18 10:50
  * 描述
  * 更新者     $Author$
- * 更新时间   $Date$
+ * 更新时间
  * 更新描述
  */
 
