@@ -98,6 +98,8 @@ public class BaseApplication extends Application implements EMMessageListener,
 
     //注册一个监听连接状态的listener
     EMClient.getInstance().addConnectionListener(this);
+
+    //初始化db
   }
 
   /**
